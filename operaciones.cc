@@ -1,14 +1,14 @@
 /*
  * ----------------------------------
  * Autor: Ruben Rodriguez Esteban ---
- * Fecha: 1-4-19 --------------------
+ * Fecha: 2-4-19 --------------------
  * ----------------------------------
  */
- 
+
 /*
  * Fichero de implementacion del modulo operaciones para trabajar con enteros
  */
- 
+
 
 #include "operaciones.h"
 
@@ -46,7 +46,7 @@ int sumarCifras(int n){
 		cifra = cifraDeUnidades(n);
 		// actualizacion del numero
 		n = numeroSinUnidades(n);
-		// incremento del numero con la cifra 
+		// incremento del numero con la cifra
 		// menos significativa
 		numero += cifra;
 	}

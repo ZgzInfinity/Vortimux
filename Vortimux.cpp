@@ -10,36 +10,51 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include "graficos.h"
 #include "tarjetaCredito.h"
 
-/*
- * Fichero de implemetacion del modulo Tarjeta credito
- */
 
-using namespace std;
+const int LIMITE_MINIMO = 0;
+const int LIMITE_MAXIMO = 2;
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha almacenado en <<orden>> una orden valida metida
+ *       por el usuario a traves del teclado
+ */
+void pedirOrden(int& orden){
+    cout << endl;
+    // Peticion al usuario de orden por teclado
+    cout << "Introduzca una de las ordenes disponibles " << flush;
+    cin >> orden;
+
+    // bucle de validacion de la orden
+    while (orden < LIMITE_MINIMO || orden > LIMITE_MAXIMO){
+        // mientras que la orden no sea valida la vuelve a pedir
+        cout << "La orden " << orden << " no esta contemplada" << endl;
+        cout << "Introduzca una de las ordenes disponibles " << flush;
+        cin >> orden;
+    }
+}
+
+
 
 
 int main (){
-	
-	srand(time(NULL));
-	
-	string t;
-    t = generarTarjeta();
-	
-	if (esTarjetaValida(t)){
-		cout << " Tarjeta valida " << endl;
-	}
-	else{
-		cout << " Tarjeta invalida " << endl;
-	}
-	
-	string t2;
-	
-	introducirTarjetaCredito(t2);
-	
-	cout << t2 << endl;
-	
-	mostrarTarjetaCredito(t2);
-	
+
+    // variable para almacenar las ordenes del usuario
+    int orden;
+
+    // Limpieza de pantalla
+    clrscr();
+
+    // presentacion del menu de opciones al usuario por pantalla
+    presentarMenu();
+
+    // peticion de orden al usuario
+    pedirOrden(orden);
+
     return 0;
 }
