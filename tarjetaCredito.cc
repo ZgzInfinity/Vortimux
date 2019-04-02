@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <conio.h>
 #include "operaciones.h"
 #include "tarjetaCredito.h"
 
@@ -22,16 +23,16 @@ using namespace std;
 
 
 /*
- * Pre: <<tarjeta>> es una cadena de caracteres que identifica una 
+ * Pre: <<tarjeta>> es una cadena de caracteres que identifica una
  *       posible tarjeta de credito autentica
  * Post: Ha devuelto <<true>> si y solo si la tarjeta de credito <<tarjeta>> es
  *       una tarjeta de credito valida. En caso contrario ha devuelto <<false>>
  */
 bool esTarjetaValida(string tarjeta){
     int digito;
-	int numero = 0; 
+	int numero = 0;
 	int valor = 0;
-	
+
 	// longitud de la cadena
     int longitud = tarjeta.size();
 
@@ -58,24 +59,24 @@ bool esTarjetaValida(string tarjeta){
 	// obtencion de la cifra menos significativa
     digito = cifraDeUnidades(numero);
 	// numero sin cifra de las unidades
-	return BASE - digito == tarjeta.at(longitud - 1) - '0'; 
+	return BASE - digito == tarjeta.at(longitud - 1) - '0';
 }
 
 
 /*
  * Pre: ---
- * Post: Ha devuelto una tarjeta de credito valida 
+ * Post: Ha devuelto una tarjeta de credito valida
  */
 string generarTarjeta(){
 	// tarjeta de credito a generar
 	string tarjeta = "";
-	
+
 	// variables auxiliares
 	char digito;
 	int numero = 0;
 	int cifra;
 	int valor;
-	
+
 	for (int i = 0; i <= MAX_DIGITOS_TARJETA - 2; i++){
 		// generacion aleatoria de un caracter entre 0 y 9
 		digito = '0' + rand() % (('9' - '0') + 1);
@@ -119,9 +120,13 @@ string generarTarjeta(){
  */
 void introducirTarjetaCredito(string& tarjeta){
 	char c;
+	// posicionamiento para evitar borrado de tabla
+	gotoxy(5, 2);
 	// peticion de la tarjeta de credito al usuario por teclado
 	cout << "Introduzca una tarjeta de credito: " << flush;
 	for (int i = 0; i < MAX_DIGITOS_TARJETA; i++){
+	    // posicionamiento en el lugar correspondiente
+        gotoxy(7 * i, 9);
 		// introducir caracter
 		cin >> c;
 		// concatenacion del caracter a la tarjeta de credito
