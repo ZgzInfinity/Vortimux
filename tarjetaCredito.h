@@ -21,12 +21,12 @@
 
 using namespace std;
 
-// constantes del modulo 
+// constantes del modulo
 const int BASE = 10;
 const int MAX_DIGITOS_TARJETA = 16;
 
 /*
- * Pre: <<tarjeta>> es una cadena de caracteres que identifica una 
+ * Pre: <<tarjeta>> es una cadena de caracteres que identifica una
  *       posible tarjeta de credito autentica
  * Post: Ha devuelto <<true>> si y solo si la tarjeta de credito <<tarjeta>> es
  *       una tarjeta de credito valida. En caso contrario ha devuelto <<false>>
@@ -36,7 +36,7 @@ bool esTarjetaValida(string tarjeta);
 
 /*
  * Pre: ---
- * Post: Ha devuelto una tarjeta de credito valida 
+ * Post: Ha devuelto una tarjeta de credito valida
  */
 string generarTarjeta();
 

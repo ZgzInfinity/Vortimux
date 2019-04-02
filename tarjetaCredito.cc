@@ -22,6 +22,9 @@
 using namespace std;
 
 
+const int ANCHO = 5;
+
+
 /*
  * Pre: <<tarjeta>> es una cadena de caracteres que identifica una
  *       posible tarjeta de credito autentica
@@ -123,10 +126,10 @@ void introducirTarjetaCredito(string& tarjeta){
 	// posicionamiento para evitar borrado de tabla
 	gotoxy(5, 2);
 	// peticion de la tarjeta de credito al usuario por teclado
-	cout << "Introduzca una tarjeta de credito: " << flush;
+	cout << "Introduzca una tarjeta de credito: ";
 	for (int i = 0; i < MAX_DIGITOS_TARJETA; i++){
 	    // posicionamiento en el lugar correspondiente
-        gotoxy(7 * i, 9);
+        gotoxy(7 + ANCHO * i, 9);
 		// introducir caracter
 		cin >> c;
 		// concatenacion del caracter a la tarjeta de credito

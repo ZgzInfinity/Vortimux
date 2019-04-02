@@ -24,6 +24,9 @@ using namespace std;
  *       disponibles para el usuario
  */
 void presentarMenu(){
+    // Posicionamiento en esquina supeior izquierda
+    // Muestreo de las opciones por pantalla
+    gotoxy(0, 0);
     cout << endl;
     cout << "MENU DE OPERACIONES DE VORTIMUX" << endl;
     cout << "===============================" << endl;
