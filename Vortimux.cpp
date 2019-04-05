@@ -52,82 +52,6 @@ void pedirOrden(int& orden){
 }
 
 
-
-
-/*
- * Pre: <<tarjeta>> es una secuencia de caracteres que conforma una
- *      tarjeta de credito y <<fichero>> es un fichero de texto que
- *      almacena tarjetas de credito a razon de una por linea
- * Post: Ha devuelto <<true>> si en el fichero de tarjetas de credito
- *       <<fichero>> existe una tarjeta de credito igual a <<tarjeta.
- *       Si no se ha podido leer el fichero o no existe la tarjeta
- *       <<tarjeta>> en el ha devuelto <<false>>
- */
-bool existeTarjetaCredito(const string& tarjeta, const char fichero[]){
-    // flujo de lectura asociado al fichero de tarjetas de credito
-    ifstream f;
-    f.open(fichero);
-    if (f.is_open()){
-        // variable que guarda la ultima tarjeta del fichero leida
-        string tarjetaActual;
-        // El fichero se ha abierto correctamente
-        bool encontrado = false;
-        // bucle de busqueda secuencial
-        f >> tarjetaActual;
-        while (!encontrado && !f.eof()){
-            // mientras no se halla encontrado o queden tarjetas por evaluar
-            if (tarjetaActual == tarjeta){
-                // tarjeta buscada encontrada
-                encontrado = true;
-            }
-            else {
-                // lectura de una nueva tarjeta del fichero
-                f >> tarjetaActual;
-            }
-        }
-        // cierre del flujo de lectura asociado al fichero
-        f.close();
-        return encontrado;
-    }
-    else {
-        // El fichero no se ha podido abrir
-        cerr << "El fichero " << fichero << " no se ha podido lerr" << endl;
-        return false;
-    }
-}
-
-
-/*
- * Pre: <<tarjeta>> es una tarjeta de credito generada de forma automatica o que
- *      ha sido introducida por el usuario para comprobar su validez y <<nombreFichero>>
- *      es un fichero de texto que guarda tarjetas de credito generadas o validadas a razon
- *      de una por linea
- * Post: Si la apertura del fichero <<nombreFichero>> se ha realizado correctamente ha almacenado
- *       la tarjeta de credito <<tarjeta>> al final del fichero en una nueva linea. En caso contrario
- *       ha informado por pantalla del problema de acceso al fichero
- */
-void escribirEnFichero(const string& tarjeta, const char nombreFichero[]){
-    // apertura del fichero para realizar escritura
-    ofstream f;
-    // flujo en modo append para poder escribir en la ultima linea
-    f.open(nombreFichero, ios::app);
-
-    if (f.is_open()){
-        // si el fichero se ha abierto correctamente
-        // escritura de la nueva tarjeta en el fichero correspondiente
-        f << tarjeta << endl;
-        // cierre del flujo de lectura asociado al fichero
-        f.close();
-    }
-    else {
-        // el fichero no se ha abierto correctamente y mada error
-        cerr << "El fichero " << nombreFichero << " es innacesible " << endl;
-    }
-
-}
-
-
-
 /*
  * Pre: <<orden>> es un codigo numerico que expresa una orden
  *      codificada por el usuario a traves del teclado
@@ -151,9 +75,6 @@ void ejecutarOrden(const int& orden, const char ficheroGeneradas[],
         // mostrar por pantalla la nueva tarjeta de credito
         cout << "Se ha generado la nueva tarjeta de credito ";
         mostrarTarjetaCredito(tarjeta);
-
-        // escribir la nueva informacion en el fichero de tarjetas generadas
-        escribirEnFichero(tarjeta, ficheroGeneradas);
         cout << endl << endl << endl;
     }
     else if (orden == 2){
@@ -172,16 +93,12 @@ void ejecutarOrden(const int& orden, const char ficheroGeneradas[],
             // cambiar fuente a verde
             textcolor(COLOR_VERDE);
             cout << "La tarjeta de credito " << tarjeta << " es valida" << endl << endl << endl;
-             // escribir la nueva informacion en el fichero de tarjetas validas
-            escribirEnFichero(tarjeta, ficheroValidas);
         }
         else {
             // no es valida
             // cambiar fuente a rojo
             textcolor(COLOR_ROJO);
             cout << "La tarjeta de credito " << tarjeta << " no es una tarjeta valida" << endl << endl << endl;
-            // escribir la nueva informacion en el fichero de tarjetas invalidas
-            escribirEnFichero(tarjeta, ficheroInvalidas);
         }
     }
     else {
@@ -245,40 +162,45 @@ int main (){
     // Limpieza de pantalla
     clrscr();
 
-    // presentacion del menu de opciones al usuario por pantalla
+    // Presentacion del menu de opciones al usuario por pantalla
     presentarMenu();
 
-    // peticion de orden al usuario
+    // Peticion de orden al usuario
     pedirOrden(orden);
 
     while (orden != 0){
-        // orden de ejecucion valida
+        // Orden de ejecucion valida
 
-        // ejecucion de la orden del usuario con los icheros donde se va a almacenar
+        // Ejecucion de la orden del usuario con los icheros donde se va a almacenar
         ejecutarOrden(orden, fichTarjetasGeneradas, fichTarjetasValidas , fichTarjetasInvalidas);
 
-        // limpieza de la pantalla
+        // Limpieza de la pantalla
         clrscr();
 
-        // vuelve a presentar el menu
+        // Vuelve a presentar el menu
         presentarMenu();
 
-        // volver a pedir una nueva tarea al usuario
+        // Volver a pedir una nueva tarea al usuario
         pedirOrden(orden);
     }
 
+    // Reemplazar ficheros de tarjetas generadas con los nuevos datos y los anteriores
+    generarFichero(arbolTarGeneradas, fichTarjetasGeneradas);
 
     // Borrar contenido del arbol binarios de tarjetas generadas
     borrar(arbolTarGeneradas);
 
+    // Reemplazar ficheros de tarjetas validas con los nuevos datos y los anteriores
+    generarFichero(arbolTarValidas, fichTarjetasValidas);
+
     // Borrar contenido del arbol binarios de tarjetas validas
     borrar(arbolTarValidas);
 
+    // Reemplazar ficheros de tarjetas invalidas con los nuevos datos y los anteriores
+    generarFichero(arbolTarInvalidas, fichTarjetasInvalidas);
+
     // Borrar contenido del arbol binarios de tarjetas invalidas
     borrar(arbolTarInvalidas);
-
-
-
 
     // Fin de la ejecucion del programa
     return 0;

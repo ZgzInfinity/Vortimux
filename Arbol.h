@@ -106,6 +106,26 @@ struct Arbol {
          */
         friend void generarArbol(Arbol& a, const char nombreFichero[]);
 
+
+
+        /*
+         * Pre: <<entrada>> es un puntero a un nodo de un arbol binario de busqueda que
+         *      almacena tarjetas de credito y <<f>> es un flujo de escritura asociado a un
+         *      fichero de texto de tarjetas de credito
+         * Post: Ha almacenado en el fichero <<nombreFichero>> las tarjetas de credito recogidas en
+         *       el arbol binario <<a>> a razon de una por linea
+         */
+        friend void generarFicheroRec(Arbol::Nodo* & entrada, ofstream& f);
+
+
+        /*
+         * Pre: <<a>> es un arbol binario de busqueda que almacena tarjetas de credito
+         * Post: Ha almacenado en el fichero de texto <<nombreFichero>> las tarjetas de credito
+         *       recogidas en el arbol <<a>> ordenadas por orden numerico descendente a razon de una
+         *       tarjeta de credito por linea
+         */
+        friend void generarFichero(Arbol& a, const char nombreFichero[]);
+
 };
 
 
