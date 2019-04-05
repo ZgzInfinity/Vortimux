@@ -127,3 +127,45 @@ void borrar(Arbol& a){
 }
 
 
+
+
+/*
+ * Pre: <<a>> es un arbol bianrio de busqueda de tarjetas de credito vacio y <<nombreFichero>> es un
+ *      fichero de texto que almacena tarjetas de credito a razon de una por linea
+ * Post: Ha almacenado en el arbol bianrio de busqueda <<a>> todas las tarjetas de credito recogidas en
+ *       el fichero de texto <<nombreFichero>>
+ */
+void generarArbol(Arbol& a, const char nombreFichero[]){
+    // flujo de lectura asociado al fichero
+    ifstream f;
+    f.open(nombreFichero);
+    if (f.is_open()){
+        // generador autoincremental de claves
+        bool error = false;
+        int i = 1;
+        string tarjetaLeida;
+        // lectura de la primera tarjeta
+        f >> tarjetaLeida;
+        while (!error && !f.eof()){
+            // insertar en el arbol la nueva tarjeta leida
+            if (insertar(a, i, tarjetaLeida)){
+                // se ha podido insertar la tarjeta correctamente porque no existe
+                i++;
+                // lectura de la siguiente tarjeta del fichero
+                f >> tarjetaLeida;
+            }
+            else {
+                // se ha producido un error en la insercion de la tarjeta
+                cerr << "Se ha producido un error al insertar la tarjeta " << tarjetaLeida << endl;
+                error = true;
+            }
+        }
+    }
+    else{
+        cerr << "El fichero " << nombreFichero << " es innacesible" << endl;
+    }
+}
+
+
+
+

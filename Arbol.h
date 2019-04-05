@@ -14,9 +14,14 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 
+
 #include <iostream>
+#include <cstring>
+#include <fstream>
+
 
 using namespace std;
+
 
 
 struct Arbol {
@@ -91,6 +96,15 @@ struct Arbol {
          */
         friend void borrar(Arbol& a);
 
+
+
+        /*
+         * Pre: <<a>> es un arbol bianrio de busqueda de tarjetas de credito vacio y <<nombreFichero>> es un
+         *      fichero de texto que almacena tarjetas de credito a razon de una por linea
+         * Post: Ha almacenado en el arbol bianrio de busqueda <<a>> todas las tarjetas de credito recogidas en
+         *       el fichero de texto <<nombreFichero>>
+         */
+        friend void generarArbol(Arbol& a, const char nombreFichero[]);
 
 };
 

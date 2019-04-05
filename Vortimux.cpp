@@ -10,7 +10,9 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <cstdio>
 #include <fstream>
+#include "Arbol.h"
 #include "graficos.h"
 #include "tarjetaCredito.h"
 
@@ -154,7 +156,7 @@ void ejecutarOrden(const int& orden, const char ficheroGeneradas[],
         escribirEnFichero(tarjeta, ficheroGeneradas);
         cout << endl << endl << endl;
     }
-    else {
+    else if (orden == 2){
         // la orden pulsada es 2
         // limpieza de la pantalla
         clrscr();
@@ -181,6 +183,14 @@ void ejecutarOrden(const int& orden, const char ficheroGeneradas[],
             // escribir la nueva informacion en el fichero de tarjetas invalidas
             escribirEnFichero(tarjeta, ficheroInvalidas);
         }
+    }
+    else {
+        // la orden pulsada es la 3
+        // borrar contenido de todos los ficheros e historial
+        remove(ficheroGeneradas);
+        remove(ficheroInvalidas);
+        remove(ficheroValidas);
+        cout << "Los ficheros de datos e historial se han borrado correctamente" << endl << endl << endl;
     }
     // cambiar fuente a amarillo
     textcolor(COLOR_AMARILLO);
@@ -214,6 +224,24 @@ int main (){
     // variable para almacenar las ordenes del usuario
     int orden;
 
+    // Arbol binaria de busqueda para almacenar las tarjetas generadas por el usuario
+    Arbol arbolTarGeneradas;
+    // Arbol binario de busqueda para almacenar las tarjetas validas
+    Arbol arbolTarValidas;
+    // Arbol binario de busqueda para almacenar las tarjetas invalidas
+    Arbol arbolTarInvalidas;
+
+
+    // Construir arbol de tarjetas generadas a partir de las tarjetas ya generadas
+    generarArbol(arbolTarGeneradas, fichTarjetasGeneradas);
+
+     // Construir arbol de tarjetas validas a partir de las tarjetas validas
+    generarArbol(arbolTarValidas, fichTarjetasValidas);
+
+     // Construir arbol de tarjetas invalidas a partir de las tarjetas invalidas
+    generarArbol(arbolTarInvalidas, fichTarjetasInvalidas);
+
+
     // Limpieza de pantalla
     clrscr();
 
@@ -238,6 +266,19 @@ int main (){
         // volver a pedir una nueva tarea al usuario
         pedirOrden(orden);
     }
+
+
+    // Borrar contenido del arbol binarios de tarjetas generadas
+    borrar(arbolTarGeneradas);
+
+    // Borrar contenido del arbol binarios de tarjetas validas
+    borrar(arbolTarValidas);
+
+    // Borrar contenido del arbol binarios de tarjetas invalidas
+    borrar(arbolTarInvalidas);
+
+
+
 
     // Fin de la ejecucion del programa
     return 0;

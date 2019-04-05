@@ -33,6 +33,7 @@ void presentarMenu(){
     cout << "0 - Finalizar" << endl;
     cout << "1 - Generar tarjeta de credito" << endl;
     cout << "2 - Validar tarjeta de credito" << endl;
+    cout << "3 - Borrar ficheros de almacenamiento" << endl;
 }
 
 
