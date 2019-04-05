@@ -74,6 +74,24 @@ struct Arbol {
         friend bool insertar(Arbol& a, const int& clave, const string& tarjeta);
 
 
+
+        /*
+         * Pre: <<entrada>> es un puntero a un nodo de un arbol que almacena tarjetas de credito
+         * Post: Ha borrado todos los nodos de los subarboles izquierdos y derechos del nodo <<entrada>>,
+         *       incluido el mismo
+         */
+        friend void borrarRec(Arbol::Nodo* & entrada);
+
+
+
+        /*
+         * Pre: <<a>> es un arbol binario de busqueda binaria que almacena tarjetas de credito
+         * Post: Ha eliminado todas las tarjetas de credito y ha devuelto <<true>> si el borrado se ha
+         *       efectuado de forma correcta. En caso contrario ha devuelto <<false>>
+         */
+        friend void borrar(Arbol& a);
+
+
 };
 
 

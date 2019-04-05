@@ -36,8 +36,8 @@ void crearArbol(Arbol& a){
  *       pero en caso contario ha devuelto <<false>>
  */
 bool insertarRec(Arbol::Nodo* & entrada, const int& clave, const string& tarjeta){
-    // error de insercion
-	bool error;
+    // booleano de control de insercion
+	bool correcto;
 	if (entrada == nullptr){
         // el arbol es vacio se reserva memoria
         // se introducen los datos de la nueva tarjeta
@@ -46,26 +46,26 @@ bool insertarRec(Arbol::Nodo* & entrada, const int& clave, const string& tarjeta
 		entrada->tarjeta = tarjeta;
 		entrada->der = nullptr;
 		entrada->izq = nullptr;
-		error = 0;
+		correcto = true;
 	}
 	// el arbol no es vacio y tiene al menos una tarjeta
 	else if (entrada->clave == clave){
         // la tarjeta ya existe y se devuelve error
-		error = 1;
+		correcto = false;
 	}
 	else{
 	    // la tarjeta no existe con esa clave
 		if(clave <= entrada->clave){
 		    // buscar en el arbol izquierdo si la clave es menor o igual que la raiz
-			error = insertarRec(entrada->izq, clave , tarjeta);
+			correcto = insertarRec(entrada->izq, clave , tarjeta);
 		}
 		else{
 		    // buscar en el arbol derecho si la clave es mayor que la raiz
-			error = insertarRec(entrada->der, clave, tarjeta);
+			correcto = insertarRec(entrada->der, clave, tarjeta);
 		}
 	}
 	// retorno del resultado
-	return error;
+	return correcto;
 }
 
 
@@ -87,5 +87,43 @@ bool insertar(Arbol& a, const int& clave, const string& tarjeta){
 }
 
 
+
+/*
+ * Pre: <<entrada>> es un puntero a un nodo de un arbol que almacena tarjetas de credito
+ * Post: Ha borrado todos los nodos de los subarboles izquierdos y derechos del nodo <<entrada>>,
+ *       incluido el mismo
+ */
+void borrarRec(Arbol::Nodo* & entrada){
+      // comprobacion de si el nodo es hoja o no
+      if (entrada != nullptr){
+          // el nodo no es nulo
+          if (entrada->izq != nullptr){
+                // comprobar y borrar el hijo izquierdo si existe
+                borrarRec(entrada->izq);
+          }
+          if (entrada->der != nullptr){
+                // comprobar y borrar el hijo derecho si existe
+                borrarRec(entrada->der);
+          }
+          else {
+               // el nodo es hoja y se procede a borrar
+               delete entrada;
+          }
+      }
+}
+
+
+
+
+/*
+ * Pre: <<a>> es un arbol binario de busqueda binaria que almacena tarjetas de credito
+ * Post: Ha eliminado todas las tarjetas de credito.
+ */
+void borrar(Arbol& a){
+    // eliminacion del arbol de tarjetas de credito
+    borrarRec(a.raiz);
+    // eliminacion del nodo raiz
+    delete a.raiz;
+}
 
 
