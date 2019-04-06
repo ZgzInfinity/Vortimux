@@ -35,33 +35,32 @@ void crearArbol(Arbol& a){
  *       Si no existia nniguna tarjeta con la clave <<clave la insercion ha ido bien y ha devuelto <<true>>,
  *       pero en caso contario ha devuelto <<false>>
  */
-bool insertarRec(Arbol::Nodo* & entrada, const int& clave, const string& tarjeta){
+bool insertarRec(Arbol::Nodo* & entrada, const string& tarjeta){
     // booleano de control de insercion
 	bool correcto;
 	if (entrada == nullptr){
         // el arbol es vacio se reserva memoria
         // se introducen los datos de la nueva tarjeta
         entrada = new Arbol::Nodo;
-		entrada->clave = clave;
 		entrada->tarjeta = tarjeta;
 		entrada->der = nullptr;
 		entrada->izq = nullptr;
 		correcto = true;
 	}
 	// el arbol no es vacio y tiene al menos una tarjeta
-	else if (entrada->clave == clave){
+	else if (entrada->tarjeta == tarjeta){
         // la tarjeta ya existe y se devuelve error
 		correcto = false;
 	}
 	else{
 	    // la tarjeta no existe con esa clave
-		if(clave <= entrada->clave){
+		if(tarjeta <= entrada->tarjeta){
 		    // buscar en el arbol izquierdo si la clave es menor o igual que la raiz
-			correcto = insertarRec(entrada->izq, clave , tarjeta);
+			correcto = insertarRec(entrada->izq, tarjeta);
 		}
 		else{
 		    // buscar en el arbol derecho si la clave es mayor que la raiz
-			correcto = insertarRec(entrada->der, clave, tarjeta);
+			correcto = insertarRec(entrada->der, tarjeta);
 		}
 	}
 	// retorno del resultado
@@ -80,9 +79,9 @@ bool insertarRec(Arbol::Nodo* & entrada, const int& clave, const string& tarjeta
  *       arbol <<a>>. Si no existia nniguna tarjeta con la clave <<clave la insercion ha ido bien y ha devuelto <<true>>,
  *       pero en caso contario ha devuelto <<false>>
  */
-bool insertar(Arbol& a, const int& clave, const string& tarjeta){
+bool insertar(Arbol& a, const string& tarjeta){
 	bool control;
-	control = insertarRec(a.raiz, clave, tarjeta);
+	control = insertarRec(a.raiz, tarjeta);
 	return control;
 }
 
@@ -105,10 +104,8 @@ void borrarRec(Arbol::Nodo* & entrada){
                 // comprobar y borrar el hijo derecho si existe
                 borrarRec(entrada->der);
           }
-          else {
-               // el nodo es hoja y se procede a borrar
-               delete entrada;
-          }
+           // el nodo es hoja y se procede a borrar
+           delete entrada;
       }
 }
 
@@ -122,8 +119,6 @@ void borrarRec(Arbol::Nodo* & entrada){
 void borrar(Arbol& a){
     // eliminacion del arbol de tarjetas de credito
     borrarRec(a.raiz);
-    // eliminacion del nodo raiz
-    delete a.raiz;
 }
 
 
@@ -142,15 +137,13 @@ void generarArbol(Arbol& a, const char nombreFichero[]){
     if (f.is_open()){
         // generador autoincremental de claves
         bool error = false;
-        int i = 1;
         string tarjetaLeida;
         // lectura de la primera tarjeta
         f >> tarjetaLeida;
         while (!error && !f.eof()){
             // insertar en el arbol la nueva tarjeta leida
-            if (insertar(a, i, tarjetaLeida)){
+            if (insertar(a, tarjetaLeida)){
                 // se ha podido insertar la tarjeta correctamente porque no existe
-                i++;
                 // lectura de la siguiente tarjeta del fichero
                 f >> tarjetaLeida;
             }

@@ -57,60 +57,58 @@ void pedirOrden(int& orden){
  *      codificada por el usuario a traves del teclado
  * Post: Si la orden <<orden>> vale toma valor 1 ha generado una nueva
  *       tarjeta de credito. Si la orden <<orden>> vale 2 ha comprobado
- *       si una tarjeta introducida por el usuario es valida o no y si la ็
+ *       si una tarjeta introducida por el usuario es valida o no y si la รง
  *       orden toma valor 0 ha finalizado la ejecucion del programa
  */
-void ejecutarOrden(const int& orden, const char ficheroGeneradas[],
-                    const char ficheroValidas[], const char ficheroInvalidas[]){
+void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas, Arbol& arbolInvalidas){
 
-    // evaluacion del tipo de orden
+    // Evaluacion del tipo de orden
     if (orden == 1){
-        // la orden es generar una tarjeta de credito
+        // La orden es generar una tarjeta de credito
         string tarjeta;
         tarjeta = generarTarjeta();
 
-        // cambio de color a blanco
-        textcolor(COLOR_BLANCO);
+        // Cambio de color a blanco
+        // textcolor(COLOR_BLANCO);
         cout << endl << endl;
         // mostrar por pantalla la nueva tarjeta de credito
         cout << "Se ha generado la nueva tarjeta de credito ";
         mostrarTarjetaCredito(tarjeta);
+		
+		// Insercion de la tarjeta geenrada en el arbol de tarjetas generadas
+		insertar(arbolGeneradas, tarjeta);
         cout << endl << endl << endl;
     }
-    else if (orden == 2){
-        // la orden pulsada es 2
-        // limpieza de la pantalla
-        clrscr();
-        // la orden es validar una tarjeta de credito
+    else{
+        // La orden pulsada es
+        // Limpieza de la pantalla
+        // clrscr();
+        // La orden es validar una tarjeta de credito
         string tarjeta;
-        // muestreo de la cuadricula de validacion
-        dibujarCuadricula();
-        // peticion al usuario de introducir la tarjeta de credito
+        // Muestreo de la cuadricula de validacion
+        // dibujarCuadricula();
+        // Peticion al usuario de introducir la tarjeta de credito
         introducirTarjetaCredito(tarjeta);
-        // comprobacion de si la tarjeta de credito es valida o no
+        // Comprobacion de si la tarjeta de credito es valida o no
         if (esTarjetaValida(tarjeta)){
-            // es valida
-            // cambiar fuente a verde
-            textcolor(COLOR_VERDE);
+            // Es valida
+            // Cambiar fuente a verde
+            //textcolor(COLOR_VERDE);
             cout << "La tarjeta de credito " << tarjeta << " es valida" << endl << endl << endl;
+
+            insertar(arbolValidas, tarjeta);
         }
         else {
-            // no es valida
-            // cambiar fuente a rojo
-            textcolor(COLOR_ROJO);
+            // No es valida
+            // Cambiar fuente a rojo
+            // textcolor(COLOR_ROJO);
             cout << "La tarjeta de credito " << tarjeta << " no es una tarjeta valida" << endl << endl << endl;
+			
+			insertar(arbolInvalidas, tarjeta);
         }
     }
-    else {
-        // la orden pulsada es la 3
-        // borrar contenido de todos los ficheros e historial
-        remove(ficheroGeneradas);
-        remove(ficheroInvalidas);
-        remove(ficheroValidas);
-        cout << "Los ficheros de datos e historial se han borrado correctamente" << endl << endl << endl;
-    }
-    // cambiar fuente a amarillo
-    textcolor(COLOR_AMARILLO);
+    // Cambiar fuente a amarillo
+    // textcolor(COLOR_AMARILLO);
     system("pause");
 }
 
@@ -133,10 +131,10 @@ int main (){
     const char fichTarjetasInvalidas[MAX_LONG_FICHERO] = "tarjetasInvalidas.txt";
 
     // configurar color de la terminal
-    textbackground(FONDO_AZUL);
+    //textbackground(FONDO_AZUL);
 
     // configurar color de la fuente
-    textcolor(COLOR_AMARILLO);
+    // textcolor(COLOR_AMARILLO);
 
     // variable para almacenar las ordenes del usuario
     int orden;
@@ -148,6 +146,14 @@ int main (){
     // Arbol binario de busqueda para almacenar las tarjetas invalidas
     Arbol arbolTarInvalidas;
 
+    // Inicio del arbol binario de tarjetas generadas
+    crearArbol(arbolTarGeneradas); 
+
+    // Inicio del arbol binario de tarjetas validas
+    crearArbol(arbolTarValidas);
+
+    // Inicio del arbol binario de tarjetas invalidas
+    crearArbol(arbolTarInvalidas);
 
     // Construir arbol de tarjetas generadas a partir de las tarjetas ya generadas
     generarArbol(arbolTarGeneradas, fichTarjetasGeneradas);
@@ -160,7 +166,7 @@ int main (){
 
 
     // Limpieza de pantalla
-    clrscr();
+    // clrscr();
 
     // Presentacion del menu de opciones al usuario por pantalla
     presentarMenu();
@@ -172,10 +178,10 @@ int main (){
         // Orden de ejecucion valida
 
         // Ejecucion de la orden del usuario con los icheros donde se va a almacenar
-        ejecutarOrden(orden, fichTarjetasGeneradas, fichTarjetasValidas , fichTarjetasInvalidas);
+        ejecutarOrden(orden, arbolTarGeneradas, arbolTarValidas , arbolTarInvalidas);
 
         // Limpieza de la pantalla
-        clrscr();
+        // clrscr();
 
         // Vuelve a presentar el menu
         presentarMenu();

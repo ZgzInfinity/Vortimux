@@ -124,12 +124,12 @@ string generarTarjeta(){
 void introducirTarjetaCredito(string& tarjeta){
 	char c;
 	// posicionamiento para evitar borrado de tabla
-	gotoxy(5, 2);
+	// gotoxy(5, 2);
 	// peticion de la tarjeta de credito al usuario por teclado
 	cout << "Introduzca una tarjeta de credito: ";
 	for (int i = 0; i < MAX_DIGITOS_TARJETA; i++){
 	    // posicionamiento en el lugar correspondiente
-        gotoxy(7 + ANCHO * i, 9);
+        // gotoxy(7 + ANCHO * i, 9);
 		// introducir caracter
 		cin >> c;
 		// concatenacion del caracter a la tarjeta de credito

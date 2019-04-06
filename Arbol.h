@@ -40,8 +40,6 @@ struct Arbol {
         };
 
         Nodo* raiz;             // puntero a la raiz del arbol
-        int numTarjetas;        // numero de tarjetas del arbol
-
     public:
 
 
@@ -63,7 +61,7 @@ struct Arbol {
          *       Si no existia nniguna tarjeta con la clave <<clave la insercion ha ido bien y ha devuelto <<true>>,
          *       pero en caso contario ha devuelto <<false>>
          */
-        friend bool insertarRec(Arbol::Nodo* & entrada, const int& clave, const string& tarjeta);
+        friend bool insertarRec(Arbol::Nodo* & entrada, const string& tarjeta);
 
 
         /*
@@ -76,7 +74,7 @@ struct Arbol {
          *       arbol <<a>>. Si todo ha ido bien ha almacenado en <<estado>> el valor 0 y si la insercion ha ido mal
          *       ha guardado el valor 1
          */
-        friend bool insertar(Arbol& a, const int& clave, const string& tarjeta);
+        friend bool insertar(Arbol& a, const string& tarjeta);
 
 
 

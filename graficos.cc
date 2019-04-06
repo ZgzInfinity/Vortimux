@@ -26,7 +26,7 @@ using namespace std;
 void presentarMenu(){
     // Posicionamiento en esquina supeior izquierda
     // Muestreo de las opciones por pantalla
-    gotoxy(0, 0);
+    // gotoxy(0, 0);
     cout << endl;
     cout << "MENU DE OPERACIONES DE VORTIMUX" << endl;
     cout << "===============================" << endl;
@@ -53,7 +53,7 @@ void presentarMenu(){
  *
  * Cada uno de los digitos de la tabla indica el caracter de la tarjeta de credito que
  * se va a validar
- */
+ *
 void dibujarCuadricula(){
 
     // Variables de referencia para dibujar cuadricula
@@ -159,8 +159,7 @@ void dibujarCuadricula(){
             pos++;
         }
     }
-
 }
-
+*/
 
 
