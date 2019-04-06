@@ -74,7 +74,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         // mostrar por pantalla la nueva tarjeta de credito
         cout << "Se ha generado la nueva tarjeta de credito ";
         mostrarTarjetaCredito(tarjeta);
-		
+
 		// Insercion de la tarjeta geenrada en el arbol de tarjetas generadas
 		insertar(arbolGeneradas, tarjeta);
         cout << endl << endl << endl;
@@ -82,11 +82,11 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
     else{
         // La orden pulsada es
         // Limpieza de la pantalla
-        // clrscr();
+        clrscr();
         // La orden es validar una tarjeta de credito
         string tarjeta;
         // Muestreo de la cuadricula de validacion
-        // dibujarCuadricula();
+        dibujarCuadricula();
         // Peticion al usuario de introducir la tarjeta de credito
         introducirTarjetaCredito(tarjeta);
         // Comprobacion de si la tarjeta de credito es valida o no
@@ -101,14 +101,14 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         else {
             // No es valida
             // Cambiar fuente a rojo
-            // textcolor(COLOR_ROJO);
+            textcolor(COLOR_ROJO);
             cout << "La tarjeta de credito " << tarjeta << " no es una tarjeta valida" << endl << endl << endl;
-			
+
 			insertar(arbolInvalidas, tarjeta);
         }
     }
     // Cambiar fuente a amarillo
-    // textcolor(COLOR_AMARILLO);
+     textcolor(COLOR_AMARILLO);
     system("pause");
 }
 
@@ -131,10 +131,10 @@ int main (){
     const char fichTarjetasInvalidas[MAX_LONG_FICHERO] = "tarjetasInvalidas.txt";
 
     // configurar color de la terminal
-    //textbackground(FONDO_AZUL);
+    textbackground(FONDO_AZUL);
 
     // configurar color de la fuente
-    // textcolor(COLOR_AMARILLO);
+    textcolor(COLOR_AMARILLO);
 
     // variable para almacenar las ordenes del usuario
     int orden;
@@ -147,7 +147,7 @@ int main (){
     Arbol arbolTarInvalidas;
 
     // Inicio del arbol binario de tarjetas generadas
-    crearArbol(arbolTarGeneradas); 
+    crearArbol(arbolTarGeneradas);
 
     // Inicio del arbol binario de tarjetas validas
     crearArbol(arbolTarValidas);
@@ -166,7 +166,7 @@ int main (){
 
 
     // Limpieza de pantalla
-    // clrscr();
+    clrscr();
 
     // Presentacion del menu de opciones al usuario por pantalla
     presentarMenu();
@@ -181,7 +181,7 @@ int main (){
         ejecutarOrden(orden, arbolTarGeneradas, arbolTarValidas , arbolTarInvalidas);
 
         // Limpieza de la pantalla
-        // clrscr();
+        clrscr();
 
         // Vuelve a presentar el menu
         presentarMenu();
