@@ -22,7 +22,7 @@
 using namespace std;
 
 
-const int ANCHO = 5;
+const int ANCHO = 4;
 
 
 /*
@@ -129,13 +129,12 @@ void introducirTarjetaCredito(string& tarjeta){
 	cout << "Introduzca una tarjeta de credito: ";
 	for (int i = 0; i < MAX_DIGITOS_TARJETA; i++){
 	    // posicionamiento en el lugar correspondiente
-        gotoxy(7 + ANCHO * i, 9);
+        gotoxy(6 + ANCHO * i, 9);
 		// introducir caracter
 		cin >> c;
 		// concatenacion del caracter a la tarjeta de credito
 		tarjeta += c;
 	}
-	gotoxy(10,5);
 }
 
 

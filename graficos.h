@@ -19,7 +19,7 @@
 
 using namespace std;
 
-const int ESPACIADO = 5;
+const int ESPACIADO = 4;
 const int ESQUINA_SUP_IZQ = 218;
 const int ESQUINA_SUP_DER = 191;
 const int ESQUINA_INF_IZQ = 192;

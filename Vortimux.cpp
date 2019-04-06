@@ -69,7 +69,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         tarjeta = generarTarjeta();
 
         // Cambio de color a blanco
-        // textcolor(COLOR_BLANCO);
+        textcolor(COLOR_BLANCO);
         cout << endl << endl;
         // mostrar por pantalla la nueva tarjeta de credito
         cout << "Se ha generado la nueva tarjeta de credito ";
@@ -94,6 +94,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
             // Es valida
             // Cambiar fuente a verde
             //textcolor(COLOR_VERDE);
+            gotoxy(4, 13);
             cout << "La tarjeta de credito " << tarjeta << " es valida" << endl << endl << endl;
 
             insertar(arbolValidas, tarjeta);
@@ -102,13 +103,14 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
             // No es valida
             // Cambiar fuente a rojo
             textcolor(COLOR_ROJO);
+            gotoxy(4, 13);
             cout << "La tarjeta de credito " << tarjeta << " no es una tarjeta valida" << endl << endl << endl;
 
 			insertar(arbolInvalidas, tarjeta);
         }
     }
     // Cambiar fuente a amarillo
-     textcolor(COLOR_AMARILLO);
+    textcolor(COLOR_AMARILLO);
     system("pause");
 }
 

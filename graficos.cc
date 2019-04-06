@@ -26,7 +26,7 @@ using namespace std;
 void presentarMenu(){
     // Posicionamiento en esquina supeior izquierda
     // Muestreo de las opciones por pantalla
-    gotoxy(0, 0);
+    gotoxy(3, 1);
     cout << endl;
     cout << "MENU DE OPERACIONES DE VORTIMUX" << endl;
     cout << "===============================" << endl;
@@ -57,8 +57,8 @@ void presentarMenu(){
 void dibujarCuadricula(){
 
     // Variables de referencia para dibujar cuadricula
-    int refColIzq = 5;
-    int refColDer = 80;
+    int refColIzq = 4;
+    int refColDer = 68;
     int refFilSup = 4;
     int refFilInf = 11;
     int refFilMed = 7;
