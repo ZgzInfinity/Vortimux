@@ -32,6 +32,36 @@ const int COLOR_BLANCO = 15;
 // longitud maxima del nombre de un fichero de tarjetas
 const int MAX_LONG_FICHERO = 100;
 
+// Retardo del bucle de carga
+const int RETARDO = 20000;
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla el mensaje "CARGANDO" seguido de una
+ *       secuencia de puntos
+ */
+void cargando(){
+    gotoxy(5,20);
+    // escritura del mensaje
+    cout << "CARGANDO DATOS" << endl;
+    for (int i = 5; i <= 80; i++){
+        // escritura de la linea con puntos
+        gotoxy(i, 22);
+        if (i % 2 != 0){
+            // escritura del punto
+            cout << ".";
+        }
+        else{
+            // escritura del espacio
+            cout << " ";
+        }
+        // dormir ejecucion durante retardp milisegundos
+        usleep(RETARDO);
+    }
+}
+
+
+
 
 /*
  * Pre: ---
@@ -179,6 +209,8 @@ int main (){
      // Construir arbol de tarjetas invalidas a partir de las tarjetas invalidas
     generarArbol(arbolTarInvalidas, fichTarInvalidas);
 
+    // bucle del mensaje cargando
+    cargando();
 
     // Limpieza de pantalla
     clrscr();
