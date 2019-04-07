@@ -36,7 +36,7 @@ const int CRUZ = 197;
 
 // Retardo del bucle de carga
 const int RETARDO = 20000;
-
+const int TECLA_ENTER = 13;
 
 /*
  * Pre: ---

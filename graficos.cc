@@ -43,7 +43,18 @@ void introduccion(){
     gotoxy(43,15);
     cout << " ZgzInfinity - 2019 " << endl;
 
+    // Esperar a que se pulse una tecla
+    gotoxy(35,18);
+    cout << "Pulse la tecla INTRO para comenzar" << flush;
 
+    // Capturar codigo de la tecla ENTER
+    while (getchar() != '\n'){
+        // Borrado de linea
+        gotoxy(35, 18);
+        clreol();
+        // Vuelve a pedir tecla
+        cout << "Pulse la tecla INTRO para comenzar" << flush;
+    }
 }
 
 

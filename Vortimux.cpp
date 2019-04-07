@@ -183,12 +183,11 @@ int main (){
     // Introduccion del programa
     introduccion();
 
+    // Esperar hasta que el usuario presione la tecla INTRO
 
-    // Esperar a que se pulse una tecla
-    system("pause");
 
     // Limpieza de pantalla
-    clrscr();
+    system("cls");
 
     // bucle del mensaje cargando
     cargando();
