@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -33,6 +34,17 @@ const int TRI_LAT_DER = 180;
 const int CRUZ = 197;
 
 
+// Retardo del bucle de carga
+const int RETARDO = 20000;
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla el nombre del generador y
+ *       validador de tarjetas de credito
+ */
+void introduccion();
+
 
 /*
  * Pre: ---
@@ -40,6 +52,17 @@ const int CRUZ = 197;
  *       disponibles para el usuario
  */
 void presentarMenu();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla el mensaje "CARGANDO" seguido de una
+ *       secuencia de puntos
+ */
+void cargando();
+
+
 
 /*
  * Pre: ---

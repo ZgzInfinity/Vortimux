@@ -13,7 +13,6 @@
 #include <cstdio>
 #include <fstream>
 #include <fcntl.h>
-#include <unistd.h>
 #include "Arbol.h"
 #include "graficos.h"
 #include "tarjetaCredito.h"
@@ -32,34 +31,6 @@ const int COLOR_BLANCO = 15;
 // longitud maxima del nombre de un fichero de tarjetas
 const int MAX_LONG_FICHERO = 100;
 
-// Retardo del bucle de carga
-const int RETARDO = 20000;
-
-/*
- * Pre: ---
- * Post: Ha mostrado por pantalla el mensaje "CARGANDO" seguido de una
- *       secuencia de puntos
- */
-void cargando(){
-    gotoxy(5,20);
-    // escritura del mensaje
-    cout << "CARGANDO DATOS" << endl;
-    for (int i = 5; i <= 80; i++){
-        // escritura de la linea con puntos
-        gotoxy(i, 22);
-        if (i % 2 != 0){
-            // escritura del punto
-            cout << ".";
-        }
-        else{
-            // escritura del espacio
-            cout << " ";
-        }
-        // dormir ejecucion durante retardp milisegundos
-        usleep(RETARDO);
-    }
-}
-
 
 
 
@@ -71,14 +42,14 @@ void cargando(){
 void pedirOrden(int& orden){
     cout << endl;
     // Peticion al usuario de orden por teclado
-    cout << "Introduzca una de las ordenes disponibles " << flush;
+    cout << " Introduzca una de las ordenes disponibles " << flush;
     cin >> orden;
 
     // bucle de validacion de la orden
     while (orden < LIMITE_MINIMO || orden > LIMITE_MAXIMO){
         // mientras que la orden no sea valida la vuelve a pedir
-        cout << "La orden " << orden << " no esta contemplada" << endl;
-        cout << "Introduzca una de las ordenes disponibles " << flush;
+        cout << " La orden " << orden << " no esta contemplada" << endl;
+        cout << " Introduzca una de las ordenes disponibles " << flush;
         cin >> orden;
     }
 }
@@ -105,7 +76,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         textcolor(COLOR_BLANCO);
         cout << endl << endl;
         // mostrar por pantalla la nueva tarjeta de credito
-        cout << "Se ha generado la nueva tarjeta de credito ";
+        cout << " Se ha generado la nueva tarjeta de credito ";
         mostrarTarjetaCredito(tarjeta);
 
 		// Insercion de la tarjeta geenrada en el arbol de tarjetas generadas
@@ -208,6 +179,16 @@ int main (){
 
      // Construir arbol de tarjetas invalidas a partir de las tarjetas invalidas
     generarArbol(arbolTarInvalidas, fichTarInvalidas);
+
+    // Introduccion del programa
+    introduccion();
+
+
+    // Esperar a que se pulse una tecla
+    system("pause");
+
+    // Limpieza de pantalla
+    clrscr();
 
     // bucle del mensaje cargando
     cargando();

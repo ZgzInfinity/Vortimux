@@ -20,6 +20,37 @@ using namespace std;
 
 /*
  * Pre: ---
+ * Post: Ha mostrado por pantalla el nombre del generador y
+ *       validador de tarjetas de credito
+ */
+void introduccion(){
+    cout << endl << endl;
+    // titulo del programa
+    cout << "   ****         ****  *********   *******    ********   ***   ****       ****  ***    ***  ****     ****   " << endl;
+    cout << "    ****       ****   *********   ********   ********   ***   *****     *****  ***    ***   ****   ****    " << endl;
+    cout << "     ****     ****    ***   ***   ***  ***     ***      ***   *** *** *** ***  ***    ***    **** ****     " << endl;
+    cout << "      ****   ****     ***   ***   *******      ***      ***   ***  *****  ***  ***    ***     *******      " << endl;
+    cout << "       *********      ***   ***   ********     ***      ***   ***   ***   ***  ***    ***    **** ****     " << endl;
+    cout << "        *******       *********   ***   ***    ***      ***   ***         ***  **********   ****   ****    " << endl;
+    cout << "         *****        *********   ***    ***   ***      ***   ***         ***  **********  ****     ****   " << endl;
+    cout << endl << endl << endl;
+
+    // Informacion del programa
+    gotoxy(30,12);
+    cout << " El generador y validador de tarjetas de credito " << endl;
+
+    // Datos del creador
+    gotoxy(43,15);
+    cout << " ZgzInfinity - 2019 " << endl;
+
+
+}
+
+
+
+
+/*
+ * Pre: ---
  * Post: Ha presentado por pantalla el menu de opciones
  *       disponibles para el usuario
  */
@@ -28,13 +59,43 @@ void presentarMenu(){
     // Muestreo de las opciones por pantalla
     gotoxy(3, 1);
     cout << endl;
-    cout << "MENU DE OPERACIONES DE VORTIMUX" << endl;
-    cout << "===============================" << endl;
-    cout << "0 - Finalizar" << endl;
-    cout << "1 - Generar tarjeta de credito" << endl;
-    cout << "2 - Validar tarjeta de credito" << endl;
-    cout << "3 - Borrar ficheros de almacenamiento" << endl;
+    cout << " MENU DE OPERACIONES DE VORTIMUX" << endl;
+    cout << " ===============================" << endl;
+    cout << " 0 - Finalizar" << endl;
+    cout << " 1 - Generar tarjeta de credito" << endl;
+    cout << " 2 - Validar tarjeta de credito" << endl;
+    cout << " 3 - Borrar ficheros de almacenamiento" << endl;
 }
+
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla el mensaje "CARGANDO" seguido de una
+ *       secuencia de puntos
+ */
+void cargando(){
+    gotoxy(5,20);
+    // escritura del mensaje
+    cout << "CARGANDO DATOS" << endl;
+    for (int i = 5; i <= 80; i++){
+        // escritura de la linea con puntos
+        gotoxy(i, 22);
+        if (i % 2 != 0){
+            // escritura del punto
+            cout << ".";
+        }
+        else{
+            // escritura del espacio
+            cout << " ";
+        }
+        // dormir ejecucion durante retardp milisegundos
+        usleep(RETARDO);
+    }
+}
+
+
 
 
 /*
