@@ -27,6 +27,8 @@ using namespace std;
 const int BASE = 10;
 const int MAX_DIGITOS_TARJETA = 16;
 
+
+
 /*
  * Pre: <<tarjeta>> es una cadena de caracteres que identifica una
  *       posible tarjeta de credito autentica
@@ -36,11 +38,14 @@ const int MAX_DIGITOS_TARJETA = 16;
 bool esTarjetaValida(string tarjeta);
 
 
+
 /*
  * Pre: ---
  * Post: Ha devuelto una tarjeta de credito valida
  */
 string generarTarjeta();
+
+
 
 /*
  * Pre: ----
@@ -48,6 +53,8 @@ string generarTarjeta();
  *       caracteres para crear una tarjeta de credito
  */
 void introducirTarjetaCredito(string& tarjeta);
+
+
 
 
 /*
@@ -58,12 +65,28 @@ void introducirTarjetaCredito(string& tarjeta);
 void mostrarTarjetaCredito(string tarjeta);
 
 
+
+
 /*
  * Pre: <<fichero>> es un fichero de texto que alamcena a razon de una por linea
  *      una secuencia de tarjetas de credito
  * Post: Ha escrito en pantalla un listado con todas las tarjetas de credito almacenadas
  *       en el fichero <<fichero>> de acuerdo con el formato que se muestra en el
  *       siguiente ejemplo
+ *
+ *       LISTADO DE TARJETAS DE CREDITO
+ *
+ *       Posicion              Tarjeta     Resultado
+ *      ---------     ----------------   -----------
+ *              1     1066654591158236        valida
+ *              2     1527614232216853        valida
+ *              3     1740948824551710      invalida
+ *              4     4113874277931980      invalida
+ *              5     4575826696910186        valida
+ *              6     7618927954312339        valida
+ *              7     7974791042538695        valida
  */
 void analizarTarjetasFichero(const char fichero[]);
+
+
 #endif

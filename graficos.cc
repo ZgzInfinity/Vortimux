@@ -45,7 +45,7 @@ void introduccion(){
 
     // Esperar a que se pulse una tecla
     gotoxy(38,18);
-    cout << "Pulse la tecla INTRO para comenzar" << flush;
+    cout << "Pulsa la tecla INTRO para comenzar" << flush;
 
     // control de salida
     bool pulsada = false;
@@ -55,10 +55,16 @@ void introduccion(){
         // Borrado de linea
         gotoxy(38, 18);
         clreol();
-        // Vuelve a pedir tecla
-        cout << "Pulse una tecla para comenzar";
 
-        if (getch() != '\n'){
+        // Vuelve a pedir tecla
+        cout << "Pulsa la tecla INTRO para comenzar";
+
+        // Capturar tecla pulsada
+        unsigned char tecla = getch();
+
+        // Comprobacion de tecla ENTER
+        if (int(tecla) == TECLA_ENTER){
+            // Es la tecla ENTER
             pulsada = true;
         }
     }
@@ -242,4 +248,36 @@ void dibujarCuadricula(){
 }
 
 
+
+/*
+ * Pre: <<codigo>> es el codigo ascii de una tecla que se desea capturar
+ *      al ser pulsada por teclada, <<i>> y <<j>> son las coordenadas de la
+ *      consola donde se desea escribir informacion
+ * Post: Ha devuelto <<true>> si y solo si se ha presionado la tecla con codigo
+ *       <<codigo>>. En caso contrario ha devuelto << false>>
+ */
+bool validarTecla(const int codigo, const int i, const int j){
+    // control de salida
+    bool pulsada = false;
+
+    // Capturar codigo de la tecla ENTER
+    while (!pulsada){
+        // Borrado de linea
+        gotoxy(38, 18);
+        clreol();
+
+        // Vuelve a pedir tecla
+        cout << "Pulsa una tecla para comenzar";
+
+        // Capturar tecla pulsada
+        unsigned char tecla = getch();
+
+        // Comprobacion de tecla ENTER
+        if (int(tecla) == TECLA_ENTER){
+            // Es la tecla ENTER
+            pulsada = true;
+        }
+    }
+    return pulsada;
+}
 

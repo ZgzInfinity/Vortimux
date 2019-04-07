@@ -42,14 +42,14 @@ const int MAX_LONG_FICHERO = 100;
 void pedirOrden(int& orden){
     cout << endl;
     // Peticion al usuario de orden por teclado
-    cout << " Introduzca una de las ordenes disponibles " << flush;
+    cout << " Introduzca una de las ordenes disponibles: " << flush;
     cin >> orden;
 
     // bucle de validacion de la orden
     while (orden < LIMITE_MINIMO || orden > LIMITE_MAXIMO){
         // mientras que la orden no sea valida la vuelve a pedir
         cout << " La orden " << orden << " no esta contemplada" << endl;
-        cout << " Introduzca una de las ordenes disponibles " << flush;
+        cout << " Introduzca una de las ordenes disponibles: " << flush;
         cin >> orden;
     }
 }
@@ -140,7 +140,27 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
     }
     // Cambiar fuente a amarillo
     textcolor(COLOR_AMARILLO);
-    system("pause");
+
+    bool pulsada = false;
+
+    // Capturar codigo de la tecla ENTER
+    while (!pulsada){
+        // Borrado de linea
+        gotoxy(1, 18);
+        clreol();
+
+        // Vuelve a pedir tecla
+        cout << " Pulsa INTRO para continuar";
+
+        // Capturar tecla pulsada
+        unsigned char tecla = getch();
+
+        // Comprobacion de tecla ENTER
+        if (int(tecla) == TECLA_ENTER){
+            // Es la tecla ENTER
+            pulsada = true;
+        }
+    }
 }
 
 
@@ -197,9 +217,6 @@ int main (){
 
     // Introduccion del programa
     introduccion();
-
-    // Esperar hasta que el usuario presione la tecla INTRO
-
 
     // Limpieza de pantalla
     system("cls");

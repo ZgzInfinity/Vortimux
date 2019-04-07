@@ -162,6 +162,18 @@ void mostrarTarjetaCredito(string tarjeta){
  * Post: Ha escrito en pantalla un listado con todas las tarjetas de credito almacenadas
  *       en el fichero <<fichero>> de acuerdo con el formato que se muestra en el
  *       siguiente ejemplo
+ *
+ *       LISTADO DE TARJETAS DE CREDITO
+ *
+ *       Posicion              Tarjeta     Resultado
+ *      ---------     ----------------   -----------
+ *              1     1066654591158236        valida
+ *              2     1527614232216853        valida
+ *              3     1740948824551710      invalida
+ *              4     4113874277931980      invalida
+ *              5     4575826696910186        valida
+ *              6     7618927954312339        valida
+ *              7     7974791042538695        valida
  */
 void analizarTarjetasFichero(const char fichero[]){
     // flujo de lectura asociado al fichero de tarjetas
@@ -176,6 +188,7 @@ void analizarTarjetasFichero(const char fichero[]){
         cout << "  Posicion              Tarjeta     Resultado " << endl;
         cout << " ---------     ----------------   -----------" << endl;
 
+        // Comenzar lectura del fichero de tarjetas
         int i = 1;
         string tarjeta;
         // lectura de tarjeta
