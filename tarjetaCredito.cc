@@ -74,6 +74,9 @@ string generarTarjeta(){
 	// tarjeta de credito a generar
 	string tarjeta = "";
 
+	// generar semilla de numeros aleatorios
+	srand(time(NULL));
+
 	// variables auxiliares
 	char digito;
 	int numero = 0;
