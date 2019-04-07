@@ -97,7 +97,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         if (esTarjetaValida(tarjeta)){
             // Es valida
             // Cambiar fuente a verde
-            //textcolor(COLOR_VERDE);
+            textcolor(COLOR_VERDE);
             gotoxy(4, 13);
             cout << "La tarjeta de credito " << tarjeta << " es valida" << endl << endl << endl;
 
@@ -129,6 +129,10 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         analizarTarjetasFichero(nombreFichero);
     }
     else {
+        cout << endl << endl;
+        textcolor(COLOR_BLANCO);
+
+        cout << " Los ficheros de datos se han formateado " << endl;
         // la orden es 4
         // los ficheros se crean con permisos de escritura y lectura para todos los usuarios
         // truncar contenido de fichero de tarjetas de credito generadas
