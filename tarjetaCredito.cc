@@ -5,12 +5,7 @@
  * ----------------------------------
  */
 
-#include <iostream>
-#include <cstring>
-#include <iomanip>
-#include <cstdlib>
-#include <ctime>
-#include <conio.h>
+
 #include "operaciones.h"
 #include "tarjetaCredito.h"
 
@@ -159,3 +154,57 @@ void mostrarTarjetaCredito(string tarjeta){
 		cout << tarjeta.at(i);
 	}
 }
+
+
+/*
+ * Pre: <<fichero>> es un fichero de texto que alamcena a razon de una por linea
+ *      una secuencia de tarjetas de credito
+ * Post: Ha escrito en pantalla un listado con todas las tarjetas de credito almacenadas
+ *       en el fichero <<fichero>> de acuerdo con el formato que se muestra en el
+ *       siguiente ejemplo
+ */
+void analizarTarjetasFichero(const char fichero[]){
+    // flujo de lectura asociado al fichero de tarjetas
+    ifstream f;
+    // apertura del fichero
+    f.open(fichero);
+    if (f.is_open()){
+        // Escritura de la cabecera
+        cout << endl;
+        cout << "  LISTADO DE TARJETAS DE CREDITO " << endl;
+        cout << endl;
+        cout << "  Posicion              Tarjeta     Resultado " << endl;
+        cout << " ---------     ----------------   -----------" << endl;
+
+        int i = 1;
+        string tarjeta;
+        // lectura de tarjeta
+        f >> tarjeta;
+        while (!f.eof()){
+            // Comprobacion de si la tarjeta es valida
+            if (esTarjetaValida(tarjeta)){
+               // Es valida
+               cout << setw(10)  << i << " "
+                    << setw(20) << tarjeta << " "
+                    << setw(14) << "valida " << endl;
+            }
+            else {
+               // Es invalida
+               cout << setw(10)  << i << " "
+                    << setw(20) << tarjeta << " "
+                    << setw(14) << "invalida " << endl;
+            }
+            // Lectura de una nueva tarjeta
+            i++;
+            f >> tarjeta;
+        }
+        cout << endl << endl;
+    }
+    else {
+        // Informar del error de lectura del fichero
+        cerr << " El fichero " << fichero << " es innacesible" << endl;
+    }
+
+}
+
+

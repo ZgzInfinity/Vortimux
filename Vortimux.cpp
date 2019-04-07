@@ -19,7 +19,7 @@
 
 // umbrales de las ordenes
 const int LIMITE_MINIMO = 0;
-const int LIMITE_MAXIMO = 3;
+const int LIMITE_MAXIMO = 4;
 
 // valores de color de fondo y fuente
 const int FONDO_AZUL = 1;
@@ -113,8 +113,23 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
 			insertar(arbolInvalidas, tarjeta);
         }
     }
+    else if (orden == 3){
+        // Limpieza de pantalla
+        clrscr();
+
+        cout << endl;
+        // la orden es la cuatro
+        char nombreFichero[MAX_LONG_FICHERO];
+
+        // Peticion al usuario de un fichero de tarjetas de credito
+        cout << " Introduzca el nombre de un fichero de tarjetas de credito: " << flush;
+        cin >> nombreFichero;
+
+        // analalizar tarjetas de un fichero
+        analizarTarjetasFichero(nombreFichero);
+    }
     else {
-        // la orden es 3
+        // la orden es 4
         // los ficheros se crean con permisos de escritura y lectura para todos los usuarios
         // truncar contenido de fichero de tarjetas de credito generadas
         creat(fichTarGeneradas, 0777);
@@ -208,7 +223,7 @@ int main (){
         ejecutarOrden(orden, arbolTarGeneradas, arbolTarValidas , arbolTarInvalidas, fichTarGeneradas, fichTarValidas, fichTarInvalidas);
 
         // Limpieza de la pantalla
-        clrscr();
+        system("cls");
 
         // Vuelve a presentar el menu
         presentarMenu();

@@ -13,6 +13,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <conio.h>
 #include "operaciones.h"
 
 /*
@@ -55,4 +57,13 @@ void introducirTarjetaCredito(string& tarjeta);
  */
 void mostrarTarjetaCredito(string tarjeta);
 
+
+/*
+ * Pre: <<fichero>> es un fichero de texto que alamcena a razon de una por linea
+ *      una secuencia de tarjetas de credito
+ * Post: Ha escrito en pantalla un listado con todas las tarjetas de credito almacenadas
+ *       en el fichero <<fichero>> de acuerdo con el formato que se muestra en el
+ *       siguiente ejemplo
+ */
+void analizarTarjetasFichero(const char fichero[]);
 #endif

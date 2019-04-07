@@ -44,16 +44,23 @@ void introduccion(){
     cout << " ZgzInfinity - 2019 " << endl;
 
     // Esperar a que se pulse una tecla
-    gotoxy(35,18);
+    gotoxy(38,18);
     cout << "Pulse la tecla INTRO para comenzar" << flush;
 
+    // control de salida
+    bool pulsada = false;
+
     // Capturar codigo de la tecla ENTER
-    while (getchar() != '\n'){
+    while (!pulsada){
         // Borrado de linea
-        gotoxy(35, 18);
+        gotoxy(38, 18);
         clreol();
         // Vuelve a pedir tecla
-        cout << "Pulse la tecla INTRO para comenzar" << flush;
+        cout << "Pulse una tecla para comenzar";
+
+        if (getch() != '\n'){
+            pulsada = true;
+        }
     }
 }
 
@@ -75,7 +82,8 @@ void presentarMenu(){
     cout << " 0 - Finalizar" << endl;
     cout << " 1 - Generar tarjeta de credito" << endl;
     cout << " 2 - Validar tarjeta de credito" << endl;
-    cout << " 3 - Borrar ficheros de almacenamiento" << endl;
+    cout << " 3 - Leer fichero de tarjetas" << endl;
+    cout << " 4 - Borrar ficheros de almacenamiento" << endl;
 }
 
 
