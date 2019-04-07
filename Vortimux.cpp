@@ -12,13 +12,15 @@
 #include <ctime>
 #include <cstdio>
 #include <fstream>
+#include <fcntl.h>
+#include <unistd.h>
 #include "Arbol.h"
 #include "graficos.h"
 #include "tarjetaCredito.h"
 
 // umbrales de las ordenes
 const int LIMITE_MINIMO = 0;
-const int LIMITE_MAXIMO = 2;
+const int LIMITE_MAXIMO = 3;
 
 // valores de color de fondo y fuente
 const int FONDO_AZUL = 1;
@@ -57,10 +59,11 @@ void pedirOrden(int& orden){
  *      codificada por el usuario a traves del teclado
  * Post: Si la orden <<orden>> vale toma valor 1 ha generado una nueva
  *       tarjeta de credito. Si la orden <<orden>> vale 2 ha comprobado
- *       si una tarjeta introducida por el usuario es valida o no y si la ç
+ *       si una tarjeta introducida por el usuario es valida o no y si la
  *       orden toma valor 0 ha finalizado la ejecucion del programa
  */
-void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas, Arbol& arbolInvalidas){
+void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas, Arbol& arbolInvalidas,
+                    const char fichTarGeneradas[], const char fichTarValidas[], const char fichTarInvalidas[]){
 
     // Evaluacion del tipo de orden
     if (orden == 1){
@@ -79,7 +82,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
 		insertar(arbolGeneradas, tarjeta);
         cout << endl << endl << endl;
     }
-    else{
+    else if (orden == 2){
         // La orden pulsada es
         // Limpieza de la pantalla
         clrscr();
@@ -109,6 +112,16 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
 			insertar(arbolInvalidas, tarjeta);
         }
     }
+    else {
+        // la orden es 3
+        // los ficheros se crean con permisos de escritura y lectura para todos los usuarios
+        // truncar contenido de fichero de tarjetas de credito generadas
+        creat(fichTarGeneradas, 0777);
+        // truncar contenido de fichero de tarjetas de credito validas
+        creat(fichTarValidas, 0777);
+        // truncar contenido de fichero de tarjetas de credito invalidas
+        creat(fichTarInvalidas, 0777);
+    }
     // Cambiar fuente a amarillo
     textcolor(COLOR_AMARILLO);
     system("pause");
@@ -126,11 +139,11 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
  */
 int main (){
     // ficheros de almacenamiento de tarjetas generadas
-    const char fichTarjetasGeneradas[MAX_LONG_FICHERO] = "tarjetasGeneradas.txt";
+    const char fichTarGeneradas[MAX_LONG_FICHERO] = "tarjetasGeneradas.txt";
     // fichero de almacenamiento de tarjetas validas
-    const char fichTarjetasValidas[MAX_LONG_FICHERO] = "tarjetasValidas.txt";
+    const char fichTarValidas[MAX_LONG_FICHERO] = "tarjetasValidas.txt";
     // fichero de almacenamiento tarjetas invalidas
-    const char fichTarjetasInvalidas[MAX_LONG_FICHERO] = "tarjetasInvalidas.txt";
+    const char fichTarInvalidas[MAX_LONG_FICHERO] = "tarjetasInvalidas.txt";
 
     // configurar color de la terminal
     textbackground(FONDO_AZUL);
@@ -158,13 +171,13 @@ int main (){
     crearArbol(arbolTarInvalidas);
 
     // Construir arbol de tarjetas generadas a partir de las tarjetas ya generadas
-    generarArbol(arbolTarGeneradas, fichTarjetasGeneradas);
+    generarArbol(arbolTarGeneradas, fichTarGeneradas);
 
      // Construir arbol de tarjetas validas a partir de las tarjetas validas
-    generarArbol(arbolTarValidas, fichTarjetasValidas);
+    generarArbol(arbolTarValidas, fichTarValidas);
 
      // Construir arbol de tarjetas invalidas a partir de las tarjetas invalidas
-    generarArbol(arbolTarInvalidas, fichTarjetasInvalidas);
+    generarArbol(arbolTarInvalidas, fichTarInvalidas);
 
 
     // Limpieza de pantalla
@@ -179,8 +192,8 @@ int main (){
     while (orden != 0){
         // Orden de ejecucion valida
 
-        // Ejecucion de la orden del usuario con los icheros donde se va a almacenar
-        ejecutarOrden(orden, arbolTarGeneradas, arbolTarValidas , arbolTarInvalidas);
+        // Ejecucion de la orden del usuario con los icheros y los arboles donde se va a almacenar
+        ejecutarOrden(orden, arbolTarGeneradas, arbolTarValidas , arbolTarInvalidas, fichTarGeneradas, fichTarValidas, fichTarInvalidas);
 
         // Limpieza de la pantalla
         clrscr();
@@ -193,19 +206,19 @@ int main (){
     }
 
     // Reemplazar ficheros de tarjetas generadas con los nuevos datos y los anteriores
-    generarFichero(arbolTarGeneradas, fichTarjetasGeneradas);
+    generarFichero(arbolTarGeneradas, fichTarGeneradas);
 
     // Borrar contenido del arbol binarios de tarjetas generadas
     borrar(arbolTarGeneradas);
 
     // Reemplazar ficheros de tarjetas validas con los nuevos datos y los anteriores
-    generarFichero(arbolTarValidas, fichTarjetasValidas);
+    generarFichero(arbolTarValidas, fichTarValidas);
 
     // Borrar contenido del arbol binarios de tarjetas validas
     borrar(arbolTarValidas);
 
     // Reemplazar ficheros de tarjetas invalidas con los nuevos datos y los anteriores
-    generarFichero(arbolTarInvalidas, fichTarjetasInvalidas);
+    generarFichero(arbolTarInvalidas, fichTarInvalidas);
 
     // Borrar contenido del arbol binarios de tarjetas invalidas
     borrar(arbolTarInvalidas);
