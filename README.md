@@ -92,9 +92,12 @@ ficheros con la finalidad de que éstos queden ordenados tal y como se muestra e
 El arbol binario de búsqueda se ha implementado de forma que cada nodo es una tarjeta de código que se identifica por medio del
 propio código numérico dado que son únicas. El árbol está ordenado de modo que para cada tarjeta, aquellas que tengan un código
 menor estén en los subárboles izquierdos y las que son mayores en los derechos, de esta manera se maximiza la eficiencia de 
-operaciones como la búsqeda de una tarjeta.
+operaciones como la búsqeda de una tarjeta. 
 
+En la siguiente imagen muestra como Vortimux almacena las tarjetas de credito en los árboles binarios sustituyendo los dígitos 
+de los nodos por los códigos de las tarjetas.
 
+![alt text](https://i.ibb.co/SwBhvZX/arbol.png)
 
 
 
