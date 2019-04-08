@@ -1,6 +1,9 @@
 # Vortimux
 Un generador y validador de tarjetas de credito
 
+![alt text](https://i.ibb.co/MNgn859/tarjetas.jpg)
+
+
 ## Descripción
 Vortimux es un generador y validaodr de tarjetas de credito implementado en lenguaje C++ destinado a generar códigos de tarjetas
 de credito válidas, y a poder verificar con total seguridad si una tarjeta de credito concreta es o no válida.
