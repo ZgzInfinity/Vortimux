@@ -102,7 +102,8 @@ dígitos de los nodos por los códigos de las tarjetas.
 ### Consideraciones de desarrollo y ejecución 
 
 Para implementar el programa se ha usado CODEBLOCKS, entorno de programación disponible para cualquier sistema operativo, 
-junto con una librería adicional externa llamada conio.h, no disponible para Linux, solo disponible para Windows. 
+junto con una librería adicional externa llamada conio.h, no disponible para Linux, solo disponible para Windows. Para tener 
+una mejor visualización del programa ajustar las dimensiones de la consola a 120 de ancho por 30 alto.
 
 
 
