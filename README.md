@@ -87,8 +87,6 @@ Tras la ejecución de una tarea, Vortimux guarda los resultados obtenidos en el 
 la orden de fin de ejecución, la orden 0, Vortimux copia el contenido de los árboles binarios recorriendolos en 
 in-orden a los ficheros con la finalidad de que éstos queden ordenados tal y como se muestra en la siguiente captura.
 
-![alt text](https://i.ibb.co/cQvN4Fq/9.png)
-
 El arbol binario de búsqueda se ha implementado de forma que cada nodo es una tarjeta que se identifica por medio de su código
 numérico dado que son únicas. El árbol está ordenado de modo que para cada tarjeta, las que tengan un código menor estén en los
 subárboles izquierdos y las que son mayores en los derechos, de esta manera se maximiza la eficiencia de operaciones como la
