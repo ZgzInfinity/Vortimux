@@ -81,6 +81,10 @@ string generarTarjeta(){
 	for (int i = 0; i <= MAX_DIGITOS_TARJETA - 2; i++){
 		// generacion aleatoria de un caracter entre 0 y 9
 		digito = '0' + rand() % (('9' - '0') + 1);
+		// evitar que el primer digito sea un 0
+		if (i == 0 && digito == '0'){
+            digito++;
+		}
 		// obtencion del valor equivalente entero
 		cifra = digito - '0';
 		// concatenacion del digito a la tarjeta
