@@ -94,6 +94,26 @@ void presentarMenu(){
 
 
 
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla las posibles
+ *       tarjetas que se pueden generar
+ */
+void presentarTarjetas(){
+    // Posicionamiento en esquina supeior izquierda
+    // Muestreo de las opciones por pantalla
+    gotoxy(3, 1);
+    cout << endl;
+    cout << " TARJETAS A GENERAR " << endl;
+    cout << " ================== " << endl;
+    cout << " 1 - American Express" << endl;
+    cout << " 2 - Diners Club" << endl;
+    cout << " 3 - Discover" << endl;
+    cout << " 4 - JCB" << endl;
+    cout << " 5 - MasterCard" << endl;
+    cout << " 6 - Visa" << endl;
+}
+
 
 /*
  * Pre: ---

@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <iterator>
 #include <conio.h>
 #include "operaciones.h"
 
@@ -40,10 +41,11 @@ bool esTarjetaValida(string tarjeta);
 
 
 /*
- * Pre: ---
- * Post: Ha devuelto una tarjeta de credito valida
+ * Pre: <<codTarjeta>> es el codigo de una tarjeta
+ * Post: Ha devuelto una tarjeta de credito valida de acuerdo
+ *       con el codigo de tarjeta <<codTarjeta>>
  */
-string generarTarjeta();
+string generarTarjeta(int codTarjeta);
 
 
 

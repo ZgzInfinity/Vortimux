@@ -57,6 +57,15 @@ void presentarMenu();
 
 /*
  * Pre: ---
+ * Post: Ha mostrado por pantalla las posibles
+ *       tarjetas que se pueden generar
+ */
+void presentarTarjetas();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha mostrado por pantalla el mensaje "CARGANDO" seguido de una
  *       secuencia de puntos
  */

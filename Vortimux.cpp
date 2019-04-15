@@ -17,9 +17,13 @@
 #include "graficos.h"
 #include "tarjetaCredito.h"
 
-// umbrales de las ordenes
+// Umbrales de las ordenes
 const int LIMITE_MINIMO = 0;
 const int LIMITE_MAXIMO = 4;
+
+// Codigos de tarjeta umbrales
+const int TARJETA_MIN = 1;
+const int TARJETA_MAX = 6;
 
 // valores de color de fondo y fuente
 const int FONDO_AZUL = 1;
@@ -55,6 +59,31 @@ void pedirOrden(int& orden){
 }
 
 
+
+
+/*
+ * Pre: ---
+ * Post: Ha almacenado en <<orden>> una orden valida metida
+ *       por el usuario a traves del teclado
+ */
+void pedirTipoTarjeta(int& tarjeta){
+    cout << endl;
+    // Peticion al usuario de tarjeta por teclado
+    cout << " Introduzca uno de los tipos de tarjeta disponibles: " << flush;
+    cin >> tarjeta;
+
+    // bucle de validacion de la orden
+    while (tarjeta < TARJETA_MIN || tarjeta > TARJETA_MAX){
+        // mientras que la tarjeta no sea valida la vuelve a pedir
+        cout << " La tarjeta " << tarjeta << " no esta contemplada" << endl;
+        cout << " Introduzca uno de los tipos de tarjeta disponibles: " << flush;
+        cin >> tarjeta;
+    }
+}
+
+
+
+
 /*
  * Pre: <<orden>> es un codigo numerico que expresa una orden
  *      codificada por el usuario a traves del teclado
@@ -68,9 +97,19 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
 
     // Evaluacion del tipo de orden
     if (orden == 1){
+        // Limpiar la pantalla
+        clrscr();
+
+        // Menu de tarjetas disponibles
+        presentarTarjetas();
+
+        // Peticion de tarjeta al usuario
+        int codTarjeta;
+        pedirTipoTarjeta(codTarjeta);
+
         // La orden es generar una tarjeta de credito
         string tarjeta;
-        tarjeta = generarTarjeta();
+        tarjeta = generarTarjeta(codTarjeta);
 
         // Cambio de color a blanco
         textcolor(COLOR_BLANCO);

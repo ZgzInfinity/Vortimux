@@ -27,94 +27,205 @@ const int ANCHO = 4;
  *       una tarjeta de credito valida. En caso contrario ha devuelto <<false>>
  */
 bool esTarjetaValida(string tarjeta){
-    int digito;
-	int numero = 0;
-	int valor = 0;
+   int numero = 0;
+   int valor, cifra;
 
-	// longitud de la cadena
-    int longitud = tarjeta.size();
-
-	// bucle de recorrido de la cadena
-    for (int i = 0; i <= longitud - 2; i++){
-		// obtencion del caracter iésima
-        digito = tarjeta.at(i) - '0';
-		// si la posicion es par
+   for (int i = tarjeta.length() - 1; i >= 0; i--){
+        cifra = tarjeta.at(i) - '0';
         if (i % 2 == 0){
-			// multiplicar por dos el valor
-            valor = 2 * digito;
-			// comprobar que el numero tiene el mas de una cifras
-			if (valor >= BASE){
-				// retorno de la suma de las cifras
-				valor = sumarCifras(valor);
-			}
-			// incrementar el valor
-			numero += valor;
-        }
-        else{
-            numero += digito;
-        }
-    }
-	// obtencion de la cifra menos significativa
-    digito = cifraDeUnidades(numero);
-	// numero sin cifra de las unidades
-	return BASE - digito == tarjeta.at(longitud - 1) - '0';
-}
+            valor = 2 * cifra;
 
-
-/*
- * Pre: ---
- * Post: Ha devuelto una tarjeta de credito valida
- */
-string generarTarjeta(){
-	// tarjeta de credito a generar
-	string tarjeta = "";
-
-	// generar semilla de numeros aleatorios
-	srand(time(NULL));
-
-	// variables auxiliares
-	char digito;
-	int numero = 0;
-	int cifra;
-	int valor;
-
-	for (int i = 0; i <= MAX_DIGITOS_TARJETA - 2; i++){
-		// generacion aleatoria de un caracter entre 0 y 9
-		digito = '0' + rand() % (('9' - '0') + 1);
-		// evitar que el primer digito sea un 0
-		if (i == 0 && digito == '0'){
-            digito++;
-		}
-		// obtencion del valor equivalente entero
-		cifra = digito - '0';
-		// concatenacion del digito a la tarjeta
-		tarjeta += digito;
-		if (i % 2 == 0){
-			// multiplicar por dos el valor
-			valor = 2 * cifra;
-			// comprobar que el numero tiene el mas de una cifras
-			if (valor >= BASE){
-				// retorno de la suma de las cifras
-				valor = sumarCifras(valor);
-			}
-			// incrementar el valor
+            if (valor >= BASE){
+                valor = sumarCifras(valor);
+            }
+            // incrementar el valor
 			numero += valor;
 		}
 		else{
 			numero += cifra;
 		}
-	}
-	// obtencion de la cifra menos significativa
+    }
+    return numero % BASE == 0;
+}
+
+
+
+/*
+ * Pre: <<codTarjeta>> es el codigo de una tarjeta
+ * Post: Ha devuelto una tarjeta de credito valida de acuerdo
+ *       con el codigo de tarjeta <<codTarjeta>>
+ */
+string generarTarjeta(int codTarjeta){
+
+    // generar semilla de numeros aleatorios
+	srand(time(NULL));
+
+    // tarjeta de credito a generar
+    string tarjeta;
+    int indice;
+    int numero = 0;
+    int codInicio, valor;
+    int total, cifra;
+    char digito;
+
+    switch(codTarjeta){
+        case 1:
+                // tarjetas American Express
+                total = MAX_DIGITOS_TARJETA - 1;
+                codInicio = rand() % 2;
+                if (codInicio == 0){
+                    tarjeta = "34";
+                }
+                else {
+                    tarjeta = "37";
+                }
+                break;
+        case 2:
+                // tarjetas Diners Club
+                codInicio = rand() % 6;
+                if (codInicio == 0){
+                    // tarjetas empiezan por 36
+                    // Total digitos entre 14 y 19
+                    total = rand() % 6 + 14;
+                    tarjeta = "36";
+                }
+                else if (codInicio == 1){
+                    // tarjetas empiezan entre 300 y 305
+                    // Total digitos entre 16 y 19
+                    total = rand() % 4 + MAX_DIGITOS_TARJETA;
+                    codInicio = rand() % 6 + 300;
+                }
+                else if (codInicio == 2){
+                    // tarjetas empiezan en 3095
+                    // Total digitos entre 16 y 19
+                    total = rand() % 4 + MAX_DIGITOS_TARJETA;
+                    tarjeta = "3095";
+                }
+                else if (codInicio == 3){
+                    // Tarjetas empiezan por 38 y 39
+                    // Total digitos entre 16 y 19
+                    total = rand() % 4 + MAX_DIGITOS_TARJETA;
+                    codInicio = rand() % 2 + 38;
+
+                }
+                else {
+                    // Tarjetas empiezan por 54 y 55 en EEUU y Canada
+                    // Total de digitos 16
+                    total = MAX_DIGITOS_TARJETA;
+                    codInicio = rand() % 2 + 54;
+                }
+                break;
+        case 3:
+                // Tarjetas Discover
+                // Total digitos entre 16 y 19
+                total = rand() % 4 + MAX_DIGITOS_TARJETA;
+                codInicio = rand() % 4;
+                if (codInicio == 0){
+                    // Tarjeta empieza por 6011
+                    tarjeta = "6011";
+                }
+                else if (codInicio == 1){
+                    // Tarjetas empiezan por rango entre 622126 y 622925
+                    codInicio = rand() % 800 + 622126;
+                }
+                else if (codInicio == 2){
+                    // Tarjetas empiezan por rango entre 624000 y 626999
+                    codInicio = rand() % 3000 + 624000;
+                }
+                else if (codInicio == 3){
+                    // Tarjetas empiezan por rango entre 628200 y 628899
+                    codInicio = rand() %  700 + 628200;
+                }
+                else {
+                    // Tarjetas empiezan por 64 o 65
+                    codInicio = rand() % 2 + 64;
+                }
+                break;
+        case 4:
+                // Tarjetas JCB empiezan por rango entre 3528 y 3589
+                // Total digitos entre 16 y 19
+                total = rand() % 4 + MAX_DIGITOS_TARJETA;
+                codInicio = rand() % 62 + 3528;
+                break;
+        case 5:
+                // Tarjetas Master Card
+                // Total digitos entre 16 y 19
+                total = MAX_DIGITOS_TARJETA;
+                codInicio = rand() % 2;
+                if (codInicio == 0){
+                    // tarjetas empiezan por rango entre 2221 y 2620
+                    codInicio = rand() % 500 + 2221;
+                }
+                else {
+                    // tarjetas empiezan por rango entre 51 y 55
+                    codInicio = rand() % 5 + 51;
+
+                }
+                break;
+        case 6:
+                // Tarjetas Visa
+                // tarjetas empiezan por 4
+                // Total digitos de 16
+                total = MAX_DIGITOS_TARJETA;
+                tarjeta = "4";
+                break;
+        default: cerr << " El codigo de la tarjeta es desconocido " << endl;
+    }
+
+    // calculo del total de caracteres rellenados segun el modelo de la tarjeta
+    indice = tarjeta.length();
+
+    // Iterador para rellenar los caracteres sobrantes
+    for (int i = total - 2; i >= 0; i--){
+
+        if (i >= indice){
+            digito = '0' + rand() % (('9' - '0') + 1);
+
+            cifra = digito - '0';
+
+            tarjeta.insert(tarjeta.begin() + indice, digito);
+        }
+        else {
+            cifra = tarjeta.at(i) - '0';
+        }
+
+        if (i % 2 == 0){
+            valor = 2 * cifra;
+
+            if (valor >= BASE){
+                valor = sumarCifras(valor);
+            }
+            // incrementar el valor
+			numero += valor;
+		}
+		else{
+			numero += cifra;
+		}
+    }
+
+    cout << numero << endl;
+
+    // obtencion de la cifra menos significativa
     cifra = cifraDeUnidades(numero);
 	// concatenar el ultimo digito resultante para hacer la tarjeta valida
-	if (cifra != 0){
-		tarjeta += (BASE - cifra) + '0';
+	if (total % 2 == 0){
+        if (cifra != 0){
+            tarjeta += (BASE - cifra) + '0';
+        }
+        else{
+            tarjeta += '0';
+        }
 	}
-	else{
-		tarjeta += '0';
+	else {
+        if (cifra != 0){
+            tarjeta += (BASE - cifra) + '0';
+        }
+        else {
+            tarjeta += '0';
+        }
 	}
 	// retorno de la tarjeta de credito
-	return tarjeta;
+    return tarjeta;
 }
 
 
@@ -150,10 +261,6 @@ void mostrarTarjetaCredito(string tarjeta){
 	int total = tarjeta.size();
 	// recorrido de la cadena de caracteres
 	for (int i = 0; i < total; i++){
-		if (i % 4 == 0 && i != 0){
-			// separacion de los caracteres en grupos de 4
-			cout << "-";
-		}
 		// mostrar caracter iésimo de la tarjeta
 		cout << tarjeta.at(i);
 	}
