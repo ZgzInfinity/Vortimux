@@ -29,7 +29,6 @@ const int BASE = 10;
 const int MAX_DIGITOS_TARJETA = 16;
 
 
-
 /*
  * Pre: <<tarjeta>> es una cadena de caracteres que identifica una
  *       posible tarjeta de credito autentica

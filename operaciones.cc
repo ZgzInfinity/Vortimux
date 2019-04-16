@@ -12,6 +12,7 @@
 
 #include "operaciones.h"
 
+
 /*
  * Pre: <<n>> es un nunero entero mayor o igual que cero
  * Post: Ha devuelto la cifra de las unidades del numero <<n>>

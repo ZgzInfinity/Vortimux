@@ -82,9 +82,11 @@ string generarTarjeta(int codTarjeta){
                 total = MAX_DIGITOS_TARJETA - 1;
                 codInicio = rand() % 2;
                 if (codInicio == 0){
+					// tarjeta empieza por 34
                     tarjeta = "34";
                 }
                 else {
+					// tarjeta empieza por 37
                     tarjeta = "37";
                 }
                 break;
@@ -95,6 +97,7 @@ string generarTarjeta(int codTarjeta){
                     // tarjetas empiezan por 36
                     // Total digitos entre 14 y 19
                     total = rand() % 6 + 14;
+					// asignacion de los caracteres por defecto a la tarjeta
                     tarjeta = "36";
                 }
                 else if (codInicio == 1){
@@ -102,11 +105,14 @@ string generarTarjeta(int codTarjeta){
                     // Total digitos entre 16 y 19
                     total = rand() % 4 + MAX_DIGITOS_TARJETA;
                     codInicio = rand() % 6 + 300;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 else if (codInicio == 2){
                     // tarjetas empiezan en 3095
                     // Total digitos entre 16 y 19
                     total = rand() % 4 + MAX_DIGITOS_TARJETA;
+					// asignacion de los caracteres por defecto a la tarjeta
                     tarjeta = "3095";
                 }
                 else if (codInicio == 3){
@@ -114,6 +120,8 @@ string generarTarjeta(int codTarjeta){
                     // Total digitos entre 16 y 19
                     total = rand() % 4 + MAX_DIGITOS_TARJETA;
                     codInicio = rand() % 2 + 38;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
 
                 }
                 else {
@@ -121,6 +129,8 @@ string generarTarjeta(int codTarjeta){
                     // Total de digitos 16
                     total = MAX_DIGITOS_TARJETA;
                     codInicio = rand() % 2 + 54;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 break;
         case 3:
@@ -135,18 +145,25 @@ string generarTarjeta(int codTarjeta){
                 else if (codInicio == 1){
                     // Tarjetas empiezan por rango entre 622126 y 622925
                     codInicio = rand() % 800 + 622126;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 else if (codInicio == 2){
                     // Tarjetas empiezan por rango entre 624000 y 626999
                     codInicio = rand() % 3000 + 624000;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 else if (codInicio == 3){
                     // Tarjetas empiezan por rango entre 628200 y 628899
                     codInicio = rand() %  700 + 628200;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 else {
                     // Tarjetas empiezan por 64 o 65
                     codInicio = rand() % 2 + 64;
+					tarjeta = to_string(codInicio);
                 }
                 break;
         case 4:
@@ -154,6 +171,8 @@ string generarTarjeta(int codTarjeta){
                 // Total digitos entre 16 y 19
                 total = rand() % 4 + MAX_DIGITOS_TARJETA;
                 codInicio = rand() % 62 + 3528;
+				// asignacion de los caracteres por defecto a la tarjeta
+				tarjeta = to_string(codInicio);
                 break;
         case 5:
                 // Tarjetas Master Card
@@ -163,11 +182,14 @@ string generarTarjeta(int codTarjeta){
                 if (codInicio == 0){
                     // tarjetas empiezan por rango entre 2221 y 2620
                     codInicio = rand() % 500 + 2221;
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 else {
                     // tarjetas empiezan por rango entre 51 y 55
                     codInicio = rand() % 5 + 51;
-
+					// asignacion de los caracteres por defecto a la tarjeta
+					tarjeta = to_string(codInicio);
                 }
                 break;
         case 6:

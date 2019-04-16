@@ -14,6 +14,13 @@
  
 
 /*
+ * Pre: <<n>> es un numero entero positivo
+ * Post Ha devuelto el numero de cifras del numero <<n>>
+ */
+int numCifras(int n);
+
+
+/*
  * Pre: <<n>> es un nunero entero mayor o igual que cero
  * Post: Ha devuelto la cifra de las unidades del numero <<n>>
  */
