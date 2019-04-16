@@ -29,10 +29,16 @@ const int ANCHO = 4;
 bool esTarjetaValida(string tarjeta){
    int numero = 0;
    int valor, cifra;
+   int desp = 0;
+   int dim = tarjeta.size();
+   
+   if (dim % 2 != 0){
+	   desp = 1;
+   }
 
    for (int i = tarjeta.length() - 1; i >= 0; i--){
         cifra = tarjeta.at(i) - '0';
-        if (i % 2 == 0){
+        if ( (i + desp) % 2 == 0){
             valor = 2 * cifra;
 
             if (valor >= BASE){
@@ -45,6 +51,7 @@ bool esTarjetaValida(string tarjeta){
 			numero += cifra;
 		}
     }
+	cout << numero << endl;
     return numero % BASE == 0;
 }
 
@@ -64,6 +71,7 @@ string generarTarjeta(int codTarjeta){
     string tarjeta;
     int indice;
     int numero = 0;
+	int desp = 0;
     int codInicio, valor;
     int total, cifra;
     char digito;
@@ -174,22 +182,24 @@ string generarTarjeta(int codTarjeta){
 
     // calculo del total de caracteres rellenados segun el modelo de la tarjeta
     indice = tarjeta.length();
+	
+	if (total % 2 != 0){
+		desp = 1;
+	}
 
     // Iterador para rellenar los caracteres sobrantes
-    for (int i = total - 2; i >= 0; i--){
-
+    for (int i = 0; i <= total - 2; i++){
         if (i >= indice){
             digito = '0' + rand() % (('9' - '0') + 1);
 
             cifra = digito - '0';
 
-            tarjeta.insert(tarjeta.begin() + indice, digito);
+            tarjeta += digito;
         }
         else {
             cifra = tarjeta.at(i) - '0';
         }
-
-        if (i % 2 == 0){
+        if ((i + desp) % 2 == 0){
             valor = 2 * cifra;
 
             if (valor >= BASE){
@@ -203,27 +213,18 @@ string generarTarjeta(int codTarjeta){
 		}
     }
 
-    cout << numero << endl;
-
     // obtencion de la cifra menos significativa
     cifra = cifraDeUnidades(numero);
 	// concatenar el ultimo digito resultante para hacer la tarjeta valida
-	if (total % 2 == 0){
-        if (cifra != 0){
-            tarjeta += (BASE - cifra) + '0';
-        }
-        else{
-            tarjeta += '0';
-        }
+	if (cifra != 0){
+		tarjeta += (BASE - cifra) + '0';
 	}
-	else {
-        if (cifra != 0){
-            tarjeta += (BASE - cifra) + '0';
-        }
-        else {
-            tarjeta += '0';
-        }
+	else{
+		tarjeta += '0';
 	}
+	
+	numero += tarjeta.at(total - 1) - '0';
+	cout << numero << endl;
 	// retorno de la tarjeta de credito
     return tarjeta;
 }
@@ -237,12 +238,12 @@ string generarTarjeta(int codTarjeta){
 void introducirTarjetaCredito(string& tarjeta){
 	char c;
 	// posicionamiento para evitar borrado de tabla
-    gotoxy(5, 2);
+    // gotoxy(5, 2);
 	// peticion de la tarjeta de credito al usuario por teclado
 	cout << "Introduzca una tarjeta de credito: ";
 	for (int i = 0; i < MAX_DIGITOS_TARJETA; i++){
 	    // posicionamiento en el lugar correspondiente
-        gotoxy(6 + ANCHO * i, 9);
+        // gotoxy(6 + ANCHO * i, 9);
 		// introducir caracter
 		cin >> c;
 		// concatenacion del caracter a la tarjeta de credito
