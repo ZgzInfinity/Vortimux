@@ -64,9 +64,6 @@ bool esTarjetaValida(string tarjeta){
  */
 string generarTarjeta(int codTarjeta){
 
-    // generar semilla de numeros aleatorios
-	srand(time(NULL));
-
     // tarjeta de credito a generar
     string tarjeta;
     int indice;

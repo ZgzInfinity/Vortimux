@@ -268,6 +268,10 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
  * orden de acabado
  */
 int main (){
+
+    // generar semilla de numeros aleatorios
+	srand(time(NULL));
+
     // ficheros de almacenamiento de tarjetas generadas
     const char fichTarGeneradas[MAX_LONG_FICHERO] = "tarjetasGeneradas.txt";
     // fichero de almacenamiento de tarjetas validas
