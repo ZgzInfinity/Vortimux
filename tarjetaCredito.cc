@@ -31,7 +31,7 @@ bool esTarjetaValida(string tarjeta){
    int valor, cifra;
    int desp = 0;
    int dim = tarjeta.size();
-   
+
    if (dim % 2 != 0){
 	   desp = 1;
    }
@@ -204,7 +204,7 @@ string generarTarjeta(int codTarjeta){
 
     // calculo del total de caracteres rellenados segun el modelo de la tarjeta
     indice = tarjeta.length();
-	
+
 	if (total % 2 != 0){
 		desp = 1;
 	}
@@ -212,13 +212,16 @@ string generarTarjeta(int codTarjeta){
     // Iterador para rellenar los caracteres sobrantes
     for (int i = 0; i <= total - 2; i++){
         if (i >= indice){
+            // Nuevo digito aleatorio de la tarjeta
             digito = '0' + rand() % (('9' - '0') + 1);
 
             cifra = digito - '0';
 
+            // Incorporacion del digito a la tarjeta
             tarjeta += digito;
         }
         else {
+            // Es uno de los digitos de reconocimiento ya introducidos
             cifra = tarjeta.at(i) - '0';
         }
         if ((i + desp) % 2 == 0){
@@ -244,9 +247,8 @@ string generarTarjeta(int codTarjeta){
 	else{
 		tarjeta += '0';
 	}
-	
+
 	numero += tarjeta.at(total - 1) - '0';
-	cout << numero << endl;
 	// retorno de la tarjeta de credito
     return tarjeta;
 }

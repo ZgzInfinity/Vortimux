@@ -85,6 +85,26 @@ void pedirTipoTarjeta(int& tarjeta){
 
 
 /*
+ * Pre: <<fichero>> es un posible fichero de texto
+ * Post: Ha creado un fichero de texto vacio de nombre <<fichero>>
+ *       en caso de si inexistencia
+ */
+void comprobarExistenciaFichero (const char fichero[]){
+    // Comprobar que el fichero se puede abrir en modo lectura
+    int fd = open(fichero, O_RDONLY);
+    if (fd > 0){
+        // el fichero exsite
+        // se cierra el flujo asociado al fichero
+        close(fd);
+    }
+    else {
+        // se crea el fichero con permisos de lectura y escritura
+        creat(fichero, 0777);
+    }
+}
+
+
+/*
  * Pre: <<orden>> es un codigo numerico que expresa una orden
  *      codificada por el usuario a traves del teclado
  * Post: Si la orden <<orden>> vale toma valor 1 ha generado una nueva
@@ -248,6 +268,15 @@ int main (){
 
     // Inicio del arbol binario de tarjetas invalidas
     crearArbol(arbolTarInvalidas);
+
+    // Comprobacion de la existencia del fichero de tarjetas geneadas
+    comprobarExistenciaFichero(fichTarGeneradas);
+
+    // Comprobacion de la existencia del fichero de tarjetas validas
+    comprobarExistenciaFichero(fichTarValidas);
+
+    // Comprobacion de la existencia del fichero de tarjetas invalidas
+    comprobarExistenciaFichero(fichTarInvalidas);
 
     // Construir arbol de tarjetas generadas a partir de las tarjetas ya generadas
     generarArbol(arbolTarGeneradas, fichTarGeneradas);
