@@ -19,7 +19,7 @@
 
 // Umbrales de las ordenes
 const int LIMITE_MINIMO = 0;
-const int LIMITE_MAXIMO = 4;
+const int LIMITE_MAXIMO = 5;
 
 // Codigos de tarjeta umbrales
 const int TARJETA_MIN = 1;
@@ -187,12 +187,43 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
         // analalizar tarjetas de un fichero
         analizarTarjetasFichero(nombreFichero);
     }
+    else if (orden == 4){
+        // Limpieza de pantalla
+        clrscr();
+
+        cout << endl;
+        // Numero de tarjetas a generar
+        int numTarjetas, codTarjeta;
+        cout << " Introduzca cuantas tarjetas desea generar: " << flush;
+        cin >> numTarjetas;
+
+        // Limpieza de pantalla
+        clrscr();
+
+        // Espacioado
+        cout << endl << endl;
+
+        // Seleccion del tipo a generar
+        presentarTarjetas();
+
+        // Espaciados
+        cout << endl << endl;
+
+        cout << " Introduzca el tipo de tarjetas que desea generar: " << flush;
+        cin >> codTarjeta;
+
+        // Limpieza de pantalla
+        clrscr();
+
+        // Insercion de las tarjetas en el arbol correspondiente
+        generarTarjetasValidas(numTarjetas, codTarjeta, arbolGeneradas);
+    }
     else {
         cout << endl << endl;
         textcolor(COLOR_BLANCO);
 
         cout << " Los ficheros de datos se han formateado " << endl;
-        // la orden es 4
+        // la orden es 5
         // los ficheros se crean con permisos de escritura y lectura para todos los usuarios
         // truncar contenido de fichero de tarjetas de credito generadas
         creat(fichTarGeneradas, 0777);

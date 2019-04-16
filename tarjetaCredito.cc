@@ -357,3 +357,32 @@ void analizarTarjetasFichero(const char fichero[]){
 }
 
 
+
+/*
+ * Pre: <<n>> es un entero positivo que indica el numero de tarjetas a generar yç
+ *      <<tipo>> indica el tipo de tarjeta que se va a crear
+ * Post: Ha almacenado en el arbol binario <<a>> todas las tarjetas generadas
+ */
+void generarTarjetasValidas(const int n, const int tipo, Arbol a){
+
+    // Escritura de la cabecera
+    cout << endl;
+    cout << "  LISTADO DE TARJETAS DE CREDITO " << endl;
+    cout << endl;
+    cout << "  Posicion              Tarjeta " << endl;
+    cout << " ---------     ---------------- " << endl;
+
+    // Comenzar lectura del fichero de tarjetas
+    string tarjeta;
+    // lectura de tarjeta
+    for (int i = 0; i < n; i++){
+        // Comprobacion de si la tarjeta es valida
+        tarjeta = generarTarjeta(tipo);
+        // Es valida
+        cout << setw(10) << i + 1 << " " << setw(20) << tarjeta << endl;
+        // Insertar la nueva tarjeta en el arbol
+        insertar(a, tarjeta);
+    }
+}
+
+

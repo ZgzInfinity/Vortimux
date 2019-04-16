@@ -17,6 +17,7 @@
 #include <iterator>
 #include <conio.h>
 #include "operaciones.h"
+#include "Arbol.h"
 
 /*
  * Fichero de implemetacion del modulo Tarjeta credito
@@ -88,6 +89,16 @@ void mostrarTarjetaCredito(string tarjeta);
  *              7     7974791042538695        valida
  */
 void analizarTarjetasFichero(const char fichero[]);
+
+
+
+
+/*
+ * Pre: <<n>> es un entero positivo que indica el numero de tarjetas a generar yç
+ *      <<tipo>> indica el tipo de tarjeta que se va a crear
+ * Post: Ha almacenado en el arbol binario <<a>> todas las tarjetas generadas
+ */
+void generarTarjetasValidas(const int n, const int tipo, Arbol a);
 
 
 #endif

@@ -89,7 +89,8 @@ void presentarMenu(){
     cout << " 1 - Generar tarjeta de credito" << endl;
     cout << " 2 - Validar tarjeta de credito" << endl;
     cout << " 3 - Leer fichero de tarjetas" << endl;
-    cout << " 4 - Borrar ficheros de almacenamiento" << endl;
+    cout << " 4 - Generar fichero de tarjetas " << endl;
+    cout << " 5 - Borrar ficheros de almacenamiento" << endl;
 }
 
 
