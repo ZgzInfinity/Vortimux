@@ -26,20 +26,22 @@ Posteriormente a la carga de los datos, Vortimux muestra por pantalla al usuario
 realizar y permanece a la espera de que el usuario le proporcione una a través de la entrada estándar. Vortimux seguirá pidiendo
 trabajo hasta que el usuario introduzca el comando de fin de ejecución. 
 
-![alt text](https://i.ibb.co/KwBPSj4/2.png)
-
 A continuación se describen cada una de las órdenes que Vortimux es capaz de realizar:
+
+![alt text](https://i.ibb.co/KwBPSj4/2.png)
 
 #### 1 - Generación de tarjetas de credito
 
 Esta orden es ejecutada cuando el usuario introduce por teclado el código de orden 1. Tras introducir dicha orden, Vortimux
-genera una tarjeta de credito aleatoria válida empleando el algoritmo de Luhn. Tras cada generación Vortimux comprueba si el
-código de esa tarjeta ya lo había generado antes. Si esa tarjeta ya existe procede a generar otra, y si no existe la guarda en
+genera una tarjeta de credito aleatoria válida empleando el algoritmo de Luhn. Vortimux solicta al usuario que introduzca por teclado uno de los posibles tipos que es capaz de generar tal y como que se muestra en la imagen:
+
+![alt text](https://i.ibb.co/tzjjRSR/3.png)
+
+Tras cada generación Vortimux comprueba si el código de esa tarjeta ya lo había generado antes. Si esa tarjeta ya existe procede a generar otra, y si no existe la guarda en
 un fichero de datos donde residen todas las tarjetas que ha generado el usuario. Si la generación de la tarjeta ha ido 
 correctamente, muestra por pantalla el siguiente mensaje.
 
 ![alt text](https://i.ibb.co/6DDCGyb/0.jpg)
-
 
 #### 2 - Validación de tarjetas de credito
 
@@ -63,10 +65,17 @@ formato con el que Vortimux devuelve la salida.
 
 ![alt text](https://i.ibb.co/VYd8Tgg/3.png)
 
+### 4 - Generar secuencia de tarjetas validas
 
-#### 4 - Formateo de los ficheros
+Esta orden es ejecutada cuando el usuario teclea la orden 4. Es muy parecida la primera orden pero con la diferencia de que el
+usuario debe introducir por teclado cuántas tarjetas desea generar exactamente. Una vez que la tarea concluye adecuadamente 
+muestra por pantalla un listado con todas las tarjetas que se han generado.
 
-Esta orden es ejecutada cuando el usuario teclea la orden 4. Como se ha explicado anteriormente, Vortimux guarda la traza de 
+![alt text](https://i.ibb.co/DK6953H/1.png)
+
+#### 5 - Formateo de los ficheros
+
+Esta orden es ejecutada cuando el usuario teclea la orden 5. Como se ha explicado anteriormente, Vortimux guarda la traza de 
 ejecución de comandos que le son solicitados en una serie de ficheros auxiliares. Con esta orden el usuario puede borrar
 todo la actividad anteriormente realizada y comenzar de nuevo. Cuando el formateo del contenido de los ficheros se efectua bien,
 Vortimux devuelve el siguiente mensaje por pantalla.
