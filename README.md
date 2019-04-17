@@ -123,7 +123,7 @@ Para poder llevar a cabo el diseño y la implementaación del programa se ha ten
 funcionamiento del algoritmo de luhn. Paralelamente se ha realizado una exhaustiva batería de pruebas para confirmar que todo
 funciona adecuadamente.
 
-URL de búsqueda de información: ![alt text](https://es.wikipedia.org/wiki/Algoritmo_de_Luhn)
+URL de búsqueda de información: https://es.wikipedia.org/wiki/Algoritmo_de_Luhn
 
-URL de verifcador de tarjetas online para comprobar resultados ![alt text](http://www.validcreditcardnumber.com/)
+URL de verifcador de tarjetas online para comprobar resultados http://www.validcreditcardnumber.com/
 
