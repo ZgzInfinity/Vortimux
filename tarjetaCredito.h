@@ -98,7 +98,7 @@ void analizarTarjetasFichero(const char fichero[]);
  *      <<tipo>> indica el tipo de tarjeta que se va a crear
  * Post: Ha almacenado en el arbol binario <<a>> todas las tarjetas generadas
  */
-void generarTarjetasValidas(const int n, const int tipo, Arbol a);
+void generarTarjetasValidas(const int n, const int tipo, Arbol& a);
 
 
 #endif

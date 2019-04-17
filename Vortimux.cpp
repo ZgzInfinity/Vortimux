@@ -240,8 +240,7 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
     // Capturar codigo de la tecla ENTER
     while (!pulsada){
         // Borrado de linea
-        gotoxy(1, 18);
-        clreol();
+        cout << endl << endl << endl;
 
         // Vuelve a pedir tecla
         cout << " Pulsa INTRO para continuar";
