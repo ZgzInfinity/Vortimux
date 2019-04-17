@@ -16,8 +16,7 @@ Vortimux permanecerá a la espera de forma indefinida hasta que dicha tecla sea 
 
 ![alt text](https://i.ibb.co/6JV0SDN/6.png)
 
-Una vez que el usuario presiona la tecla INTRO, se muestra una pantalla de carga donde Vortimux recopila información perteneciente
-a tareas y actividades de sesiones de ejecución anteriores.
+Una vez que el usuario presiona la tecla INTRO, se muestra una pantalla de carga donde Vortimux recopila información perteneciente a tareas y actividades de sesiones de ejecución anteriores.
 
 ![alt text](https://i.ibb.co/MVLBHBH/8.png)
 
@@ -27,7 +26,7 @@ Posteriormente a la carga de los datos, Vortimux muestra por pantalla al usuario
 realizar y permanece a la espera de que el usuario le proporcione una a través de la entrada estándar. Vortimux seguirá pidiendo
 trabajo hasta que el usuario introduzca el comando de fin de ejecución. 
 
-![alt text](https://i.ibb.co/q7XvQ5r/7.jpg)
+![alt text](https://i.ibb.co/KwBPSj4/2.png)
 
 A continuación se describen cada una de las órdenes que Vortimux es capaz de realizar:
 
