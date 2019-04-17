@@ -49,7 +49,8 @@ correctamente, muestra por pantalla el siguiente mensaje.
 Esta orden es ejecutada cuando el usuario introduce por teclado la orden 2. Tras introducir dicha orden, Vortimux solicita al
 usuario que introduzca por medio de teclado el código de la tarjeta de credito de la que desea conocer su validez. Para poder
 determinar si es o no válida emplea el algoritmo de Luhn. A continuación se muestran dos capturas de los resultados devueltos 
-por Vortimux tras efectuar la verificación de una tarjeta válida y otra inválida, respectivamente.
+por Vortimux tras efectuar la verificación de una tarjeta válida y otra inválida, respectivamente. Vortimux solo valida tarjetas
+de 16 dígitos.
 
 ![alt text](https://i.ibb.co/8gPkPjw/2.png)
 
@@ -62,15 +63,15 @@ Esta orden se ejecuta cuando el usuario teclea la orden 3. Tras recibir esta ord
 un fichero de texto que almacena una secuencia concreta de tarjetas de credito. Como resultado de esta tarea Vortimux muestra
 por pantalla un listado de las tarjetas de credito residentes en ese fichero, a razón de una por línea, en la que ofrece 
 detalles de la posición que ocupa en el fichero, su código numérico, y si es o no válida. En la siguiente imagen se muestra el 
-formato con el que Vortimux devuelve la salida.
+formato con el que Vortimux devuelve la salida. Las tarjetas a validar deben de estar formadas por códigos de 16 dígitos.
 
 ![alt text](https://i.ibb.co/VYd8Tgg/3.png)
 
-#### 4 - Generar secuencia de tarjetas validas
+#### 4 - Generar secuencia de tarjetas válidas
 
 Esta orden es ejecutada cuando el usuario teclea la orden 4. Es muy parecida a la primera orden pero con la diferencia de que el
 usuario debe introducir por teclado cuántas tarjetas desea generar exactamente. Una vez que la tarea concluye adecuadamente 
-muestra por pantalla un listado con todas las tarjetas que se han generado.
+muestra por pantalla un listado con todas las tarjetas que se han generado. 
 
 ![alt text](https://i.ibb.co/DK6953H/1.png)
 
@@ -117,7 +118,9 @@ una mejor visualización del programa ajustar las dimensiones de la consola a 12
 En la primera ejecución Vortimux no dispone de los ficheros con los que trabajar. Por ello se recomienda pulsar la opción 0 para
 que los genere de manera automática.
 
-### Documentacion 
+Por motivos de apariencia y estética Vortimux solo puede validar tarjetas de hasta 16 dígitos.
+
+### Documentación 
 
 Para poder llevar a cabo el diseño y la implementaación del programa se ha tenido que buscar la información pertinente sobre el 
 funcionamiento del algoritmo de luhn. Paralelamente se ha realizado una exhaustiva batería de pruebas para confirmar que todo
