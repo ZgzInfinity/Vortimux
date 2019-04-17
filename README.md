@@ -1,3 +1,4 @@
+
 # Vortimux
 Un generador y validador de tarjetas de credito
 
@@ -33,7 +34,7 @@ A continuación se describen cada una de las órdenes que Vortimux es capaz de r
 #### 1 - Generación de tarjetas de credito
 
 Esta orden es ejecutada cuando el usuario introduce por teclado el código de orden 1. Tras introducir dicha orden, Vortimux
-genera una tarjeta de credito aleatoria válida empleando el algoritmo de Luhn. Vortimux solicta al usuario que introduzca por teclado uno de los posibles tipos que es capaz de generar tal y como que se muestra en la imagen:
+genera una tarjeta de credito aleatoria válida empleando el algoritmo de Luhn. Vortimux solicita al usuario que introduzca por teclado uno de los posibles tipos que es capaz de generar tal y como que se muestra en la imagen:
 
 ![alt text](https://i.ibb.co/tzjjRSR/3.png)
 
@@ -65,9 +66,9 @@ formato con el que Vortimux devuelve la salida.
 
 ![alt text](https://i.ibb.co/VYd8Tgg/3.png)
 
-### 4 - Generar secuencia de tarjetas validas
+#### 4 - Generar secuencia de tarjetas validas
 
-Esta orden es ejecutada cuando el usuario teclea la orden 4. Es muy parecida la primera orden pero con la diferencia de que el
+Esta orden es ejecutada cuando el usuario teclea la orden 4. Es muy parecida a la primera orden pero con la diferencia de que el
 usuario debe introducir por teclado cuántas tarjetas desea generar exactamente. Una vez que la tarea concluye adecuadamente 
 muestra por pantalla un listado con todas las tarjetas que se han generado.
 
@@ -116,9 +117,13 @@ una mejor visualización del programa ajustar las dimensiones de la consola a 12
 En la primera ejecución Vortimux no dispone de los ficheros con los que trabajar. Por ello se recomienda pulsar la opción 0 para
 que los genere de manera automática.
 
+### Documentacion 
 
+Para poder llevar a cabo el diseño y la implementaación del programa se ha tenido que buscar la información pertinente sobre el 
+funcionamiento del algoritmo de luhn. Paralelamente se ha realizado una exhaustiva batería de pruebas para confirmar que todo
+funciona adecuadamente.
 
+URL de búsqueda de información: ![alt text](https://es.wikipedia.org/wiki/Algoritmo_de_Luhn)
 
-
-
+URL de verifcador de tarjetas online para comprobar resultados ![alt text](http://www.validcreditcardnumber.com/)
 
