@@ -125,5 +125,5 @@ funciona adecuadamente.
 
 URL de búsqueda de información: https://es.wikipedia.org/wiki/Algoritmo_de_Luhn
 
-URL de verifcador de tarjetas online para comprobar resultados: http://www.validcreditcardnumber.com/
+URL de verificador de tarjetas online para comprobar resultados: http://www.validcreditcardnumber.com/
 
