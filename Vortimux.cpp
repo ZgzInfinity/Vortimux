@@ -268,8 +268,11 @@ void ejecutarOrden(const int& orden, Arbol& arbolGeneradas, Arbol& arbolValidas,
  */
 int main (){
 
+    // Ajustar dimensiones automaticas de la consola
+    system("mode con: cols=120 lines=30");
+	
     // generar semilla de numeros aleatorios
-	srand(time(NULL));
+    srand(time(NULL));
 
     // ficheros de almacenamiento de tarjetas generadas
     const char fichTarGeneradas[MAX_LONG_FICHERO] = "tarjetasGeneradas.txt";
