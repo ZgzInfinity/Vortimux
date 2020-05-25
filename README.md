@@ -1,14 +1,22 @@
 
+
+<p align="center">
+  <img src="https://i.ibb.co/MNgn859/tarjetas.jpg" alt="Logo" width=100 height=100>
+
+  <h3 align="center">Vortimux</h3>
+
+  <p align="center">
+    <b>Un generador y validador de tarjetas de credito
+</b> <br>
+  </p>
+</p>
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 [![windows](https://img.shields.io/badge/Windows%20-compatible-1df31a.svg)](https://www.microsoft.com/es-es/windows) 
 [![Version](https://img.shields.io/badge/Version%20-1.0-0101DF.svg)](https://github.com/ZgzInfinity/Vortimux/releases)
 ![GitHub All Releases](https://img.shields.io/github/downloads/ZgzInfinity/Vortimux/total?color=%20%23f34605&label=Release%20downloads&logoColor=%20)
-
-# Vortimux
-Un generador y validador de tarjetas de credito
-
-![alt text](https://i.ibb.co/MNgn859/tarjetas.jpg)
-
+[![Github Stars](https://img.shields.io/github/stars/ZgzInfinity/Vortimux?logo=github)](https://github.com/ZgzInfinity/Vortimux/stargazers)
+[![Github Stars](https://img.shields.io/github/forks/ZgzInfinity/Vortimux?logo=github)](https://github.com/ZgzInfinity/Vortimux/stargazers)
 
 ## Descripción
 Vortimux es un generador y validador de tarjetas de credito implementado en lenguaje C++ destinado a generar códigos de tarjetas
