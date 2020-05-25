@@ -2,6 +2,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 [![windows](https://img.shields.io/badge/Windows%20-compatible-1df31a.svg)](https://www.microsoft.com/es-es/windows) 
 [![Version](https://img.shields.io/badge/Version%20-1.0-0101DF.svg)](https://github.com/ZgzInfinity/Vortimux/releases)
+![GitHub All Releases](https://img.shields.io/github/downloads/ZgzInfinity/Vortimux/total?color=%20%23f34605&label=Release%20downloads&logoColor=%20)
 
 # Vortimux
 Un generador y validador de tarjetas de credito
